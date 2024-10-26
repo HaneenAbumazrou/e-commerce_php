@@ -8,6 +8,8 @@ require_once "./function/dd.php";
 require "./vendor/autoload.php";
 
 $dotenv = Dotenv::createImmutable(__DIR__);
+
+
 $dotenv->load();
 
 

@@ -22,8 +22,9 @@
     <div class="col-sm-12 col-lg-8">
 
       <?php if(isset($_SESSION["addingNewAdminSuccessfully"])): ?>
-        <div class="alert alert-success">
-          <?php echo $_SESSION["addingNewAdminSuccessfully"] ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <?= $_SESSION["addingNewAdminSuccessfully"] ?>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <?php endif ?>
 
@@ -35,7 +36,7 @@
             <div class="row my-2">
               <div class="col-sm-12 col-lg-4">
                 <label class="form-label">First Name</label>
-                <input type="text" class="form-control" name="first_name">
+                <input type="text" class="form-control" name="first_name" value="<?= $_POST["first_name"] ?? null ?>">
                 <span class="text-danger">
                   <?= $_SESSION["add_admin_errors"]["first_name_error"] ?? null ?>
                 </span>
@@ -43,7 +44,7 @@
               
               <div class="col-sm-12 col-lg-4">
                 <label class="form-label">Last Name</label>
-                <input type="text" class="form-control" name="last_name">
+                <input type="text" class="form-control" name="last_name" value="<?= $_POST["last_name"] ?? null ?>">
                 <span class="text-danger">
                   <?= $_SESSION["add_admin_errors"]["last_name_error"] ?? null ?>
                 </span>
@@ -51,7 +52,7 @@
 
               <div class="col-sm-12 col-lg-4">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-control" name="username">
+                <input type="text" class="form-control" name="username" value="<?= $_POST["username"] ?? null ?>">
                 <span class="text-danger">
                   <?= $_SESSION["add_admin_errors"]["username_error"] ?? null ?>
                 </span>
@@ -61,7 +62,7 @@
 
             <div class="my-2">
               <label class="form-label">Email</label>
-              <input type="text" class="form-control" name="email">
+              <input type="text" class="form-control" name="email" value="<?= $_POST["email"] ?? null ?>">
               <span class="text-danger">
                 <?= $_SESSION["add_admin_errors"]["email_error"] ?? null ?>
               </span>

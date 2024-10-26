@@ -20,6 +20,7 @@ class AdminController {
 
   public function create($data){
     // dd($data);
+    $this->admin->create($data);
   }
 
 

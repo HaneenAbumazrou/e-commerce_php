@@ -68,8 +68,9 @@ $admin_routes = [
   
   // admins
   "/admin/admins" => "controller/admin/admins/index.php",
-  "/admin/admins/create" => "views/pages/admin/admins/create.php",
+  "/admin/admins/create" => "controller/admin/admins/create.php",
   "/admin/admins/show" => "views/pages/admin/admins/show.php",
+  "/admin/admins/profile" => "controller/admin/admins/admin-profile.php",
   
   
   // users

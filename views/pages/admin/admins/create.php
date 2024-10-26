@@ -1,5 +1,4 @@
 <?php
-  session_start();
 	$title = 'Add New Admins';
 	$admins = 'active';
 	ob_start();
@@ -19,7 +18,6 @@
 
 
 
-
   <div class="row">
     <div class="col-sm-12 col-lg-8">
 
@@ -33,46 +31,49 @@
         <div class="card-body">
           <h5 class="card-title">Add Admin</h5>
 
-          <form action="../../../Controller/admin/admins/create.php" method="POST">
+          <form action="/admin/admins/create" method="POST">
             <div class="row my-2">
               <div class="col-sm-12 col-lg-4">
                 <label class="form-label">First Name</label>
                 <input type="text" class="form-control" name="first_name">
                 <span class="text-danger">
-                  <?= (isset($_SESSION["add_admin_errors"]["first_name_error"])) ? $_SESSION["add_admin_errors"]["first_name_error"] : null ; ?>
+                  <?= $_SESSION["add_admin_errors"]["first_name_error"] ?? null ?>
                 </span>
               </div>
+              
               <div class="col-sm-12 col-lg-4">
                 <label class="form-label">Last Name</label>
                 <input type="text" class="form-control" name="last_name">
                 <span class="text-danger">
-                  <?= (isset($_SESSION["add_admin_errors"]["first_name_error"])) ? $_SESSION["add_admin_errors"]["last_name_error"] : null ; ?>
+                  <?= $_SESSION["add_admin_errors"]["last_name_error"] ?? null ?>
                 </span>
               </div>
 
               <div class="col-sm-12 col-lg-4">
                 <label class="form-label">Username</label>
                 <input type="text" class="form-control" name="username">
+                <span class="text-danger">
+                  <?= $_SESSION["add_admin_errors"]["username_error"] ?? null ?>
+                </span>
               </div>
             </div>
 
 
-
             <div class="my-2">
               <label class="form-label">Email</label>
-              <input type="email" class="form-control" name="email">
-            </div>
-
-
-            <div class="my-2">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" name="email">
+              <input type="text" class="form-control" name="email">
+              <span class="text-danger">
+                <?= $_SESSION["add_admin_errors"]["email_error"] ?? null ?>
+              </span>
             </div>
 
             <div class="row my-2">
               <div class="col-sm-12 col-lg-6">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" name="password">
+                <span class="text-danger">
+                  <?= $_SESSION["add_admin_errors"]["password_error"] ?? null ?>
+                </span>
               </div>
               <div class="col-sm-12 col-lg-6">
                 <label class="form-label">Password Confirmation</label>
@@ -86,6 +87,9 @@
                 <option value="admin">Admin</option>
                 <option value="super admin">Super Admin</option>
               </select>
+              <span class="text-danger">
+                <?= $_SESSION["add_admin_errors"]["_error"] ?? null ?>
+              </span>
             </div>
 
             <div class="my-5 d-grid gap-2">
@@ -97,8 +101,6 @@
       </div>
     </div>
   </div>
-
-
 
 
 

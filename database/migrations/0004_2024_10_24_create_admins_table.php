@@ -11,8 +11,10 @@ class CreateAdminsTable
             first_name VARCHAR(50) NOT NULL,
             last_name VARCHAR(50) NOT NULL,
             email VARCHAR(100) NOT NULL UNIQUE,
-            role ENUM('admin', 'super admin') NOT NULL DEFAULT 'super admin',
+            role ENUM('admin', 'super admin') NOT NULL DEFAULT 'admin',
             password VARCHAR(248) NOT NULL,
+            image VARCHAR(248) NULL,
+            path VARCHAR(248) NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )";

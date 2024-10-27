@@ -20,6 +20,7 @@ class AdminController {
 
 
   public function create($data){
+
         $admin = new Admin();
         
         // // Hash the password
@@ -42,6 +43,8 @@ class AdminController {
   public function update($data, $id){
     $admin = new Admin();
     $admin->update($data, $id);
+    $this->admin->create($data);
+
   }
 
   public function where($query){

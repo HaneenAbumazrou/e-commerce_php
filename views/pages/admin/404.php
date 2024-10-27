@@ -1,3 +1,5 @@
+<?php $title = "Page Not Found"; ?>
+
 <!DOCTYPE html>
 <html lang="en" style="overflow: hidden;">
 

@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     $admin = $adminModel->find($admin_id);
     // var_dump($admin);
     // dd($admin);
-
+  
   
     if ($admin) {
       $full_name = $admin['first_name'] . ' ' . $admin['last_name'];

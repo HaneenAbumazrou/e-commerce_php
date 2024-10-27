@@ -66,12 +66,14 @@ $admin_routes = [
   "/admin/dashboard" => "controller/admin/dashboard.php",
 
   ## Auth
-  "/admin/login" => "views/pages/admin/Login/login.php",
+  // "/admin/login" => "views/pages/admin/Login/login.php",
+  "/admin/login" => "controller/admin/login/login.php",
   
   // admins
   "/admin/admins" => "controller/admin/admins/index.php",
   "/admin/admins/create" => "controller/admin/admins/create.php",
-  "/admin/admins/show" => "views/pages/admin/admins/show.php",
+  "/admin/admins/show" => "controller/admin/admins/show.php",
+  "/admin/admins/delete" => "controller/admin/admins/delete.php",
   "/admin/admins/profile" => "controller/admin/admins/admin-profile.php",
   
   

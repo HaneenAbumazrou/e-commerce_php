@@ -113,7 +113,7 @@ class Model {
     $query .= "WHERE $this->pk=$pk";
 
 
-    // dd($query);
+
     try {
       $stmt = $this->conn->prepare($query);
       $stmt->execute();

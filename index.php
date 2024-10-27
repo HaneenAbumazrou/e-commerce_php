@@ -91,6 +91,13 @@ $admin_routes = [
   "/admin/products/edit" => "views/pages/admin/products/update.php",
   "/admin/products/show" => "views/pages/admin/products/show.php",
   
+  
+  // coupons
+  "/admin/coupons" => "controller/admin/coupons/index.php",
+  "/admin/coupons/create" => "controller/admin/coupons/create.php",
+  "/admin/coupons/update" => "controller/admin/coupons/update.php",
+  "/admin/coupons/delete" => "controller/admin/coupons/delete.php",
+  
   "/admin/404" => "views/pages/admin/404.php",
 
 ];

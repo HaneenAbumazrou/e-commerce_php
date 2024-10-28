@@ -38,6 +38,4 @@ class User {
   public function find($pk){
     return $this->model->find($pk);
   }
-
-
 }

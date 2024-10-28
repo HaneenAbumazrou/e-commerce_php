@@ -3,6 +3,7 @@ require "./controller/admin/admins/AdminController.php";
 
 $adminModel = new AdminController();
 
+
 if (isset($_GET['id'])) {
     $admin_id = $_GET['id'];
   

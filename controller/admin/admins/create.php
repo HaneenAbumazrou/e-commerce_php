@@ -4,11 +4,16 @@ session_start();
 require "./controller/admin/admins/AdminController.php";
 
 
+function check_if_exists($email){
+  return (new Admin())->where("SELECT email FROM admins WHERE email = '$email'");
+}
+
 /**
  * Check if the data are valid or not.
  * is empty --
  * use clean()
  * check if email
+ * check if email is exsit
  * check if passwords are same. -- 
  * @param data : the data sent to check if valid.
  * @return true if all data are valid, flase otherwise.
@@ -34,6 +39,10 @@ function validation($data){
   else if(!preg_match("/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/", $data["email"])) {
     $result = false;
     $_SESSION["add_admin_errors"]["email_error"] = "You must enter a vaild email address.";
+  }
+  else if(check_if_exists($data["email"])) {
+    $result = false;
+    $_SESSION["add_admin_errors"]["email_error"] = "The email already used.";
   }
 
   if(!$data["username"]){
@@ -71,31 +80,27 @@ function clean($data){
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-  $admin = new AdminController();
-  $admins = $admin->create($_POST);
-
 
   if(validation($_POST)){
 
-    $_POST["first_name"]  = clean($_POST["first_name"]);
-    $_POST["last_name"]  = clean($_POST["last_name"]);
-    $_POST["username"]  = clean($_POST["username"]);
-    $_POST["email"]  = clean($_POST["email"]);
-    $_POST["password"]  = clean($_POST["password"]);
-    $_POST["role"]  = clean($_POST["role"]);
+    $data["first_name"]  = clean($_POST["first_name"]);
+    $data["last_name"]  = clean($_POST["last_name"]);
+    $data["username"]  = clean($_POST["username"]);
+    $data["email"]  = clean($_POST["email"]);
+    $data["password"]  = password_hash(clean($_POST["password"]), PASSWORD_BCRYPT);
+    $data["role"]  = clean($_POST["role"]);
 
+
+    $admin = new AdminController();
+    $admins = $admin->create($data);
+
+    $_SESSION["addingNewAdminSuccessfully"] = "The new admin added successfully.";
   }
-  else{
-    // dd($_SESSION["add_admin_errors"]);
-    // var_dump($_SESSION["add_admin_errors"]["first_name_error"] ?? null);
-  }
+
+}
 
 
-
-
-}?>
-
-<?php
 require "./views/pages/admin/admins/create.php";
 
+unset($_SESSION["addingNewAdminSuccessfully"]);
 unset($_SESSION["add_admin_errors"]);

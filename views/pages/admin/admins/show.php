@@ -57,24 +57,31 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  <div class="col-lg-9 col-md-8"><?= $full_name ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Role</div>
-                  <div class="col-lg-9 col-md-8">Admin</div>
+                  <div class="col-lg-9 col-md-8"><?= $role ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  <div class="col-lg-9 col-md-8"><?= $email ?></div>
                 </div>
 
+
                 <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Status</div>
-                  <div class="col-lg-9 col-md-8"><span class="badge text-bg-success">Active</span></div>
-                  <!-- <div class="col-lg-9 col-md-8"><span class="badge text-bg-danger">Inactive</span></div> -->
-                </div>
+              <div class="col-lg-3 col-md-4 label">Status</div>
+              <div class="col-lg-9 col-md-8">
+                <?php if ($status === 'active'): ?>
+                  <span class="badge text-bg-success">Active</span>
+                <?php else: ?>
+                  <span class="badge text-bg-danger">Not Active</span>
+                <?php endif; ?>
+              </div>
+            </div>
+
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">From</div>
@@ -83,12 +90,27 @@
 
               </div>
 
+              <?php if ($status === 'active'): ?> <!-- Check if status is active -->
+
               <div class="tab-pane fade pt-3" id="profile-settings">
-                <form action="" method="post">
-                  <!-- <input type="submit" value="Active" class="btn btn-success"> -->
-                  <input type="submit" value="Deactive" class="btn btn-danger">
+                <form action="/admin/admins/delete?id=<?=$admin_id ?>" id="delete-form" method="POST"  onsubmit="return confirmDelete()">
+                  <button type="submit" class="btn btn-danger">Deactivate</button>
+
                 </form>
               </div>
+
+              <?php else: ?> <!-- Check if status is not active -->
+
+                <div class="tab-pane fade pt-3" id="profile-settings">
+                <form action="/admin/admins/delete?id=<?=$admin_id ?>" id="active-form" method="POST" onsubmit="return confirmActive()">
+                  <button type="submit" class="btn btn-success">Activate</button>
+
+                </form>
+              </div>
+
+
+                <?php endif; ?>
+
 
 
             </div>

@@ -2,8 +2,14 @@
 	$title = 'Login';
 	$category = 'active';
 	ob_start();
+  $emailValue = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : '';
+
 ?>
 
+
+<script>
+    const loginError = <?php echo $error ? 'true' : 'false'; ?>;
+</script>
 
 
 
@@ -26,21 +32,21 @@
           <p class="text-center small">Enter your username & password to login</p>
         </div>
 
-        <form class="row g-3 needs-validation" action="" method="POST" >
+        <form class="row g-3 needs-validation" action="" method="POST" novalidate onsubmit="return validateForm()">
 
           <div class="col-12">
             <label for="yourUsername" class="form-label">Email</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend">@</span>
-              <input type="email" name="email" class="form-control" id="yourUsername" required>
-              <div class="invalid-feedback">Please enter your username.</div>
+              <input type="email" name="email" class="form-control" id="yourUsername" value="<?php echo htmlspecialchars($emailValue); ?>" >
+              <div class="invalid-feedback">Please enter your Email.</div>
             </div>
           </div>
 
           <div class="col-12">
             <label for="yourPassword" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="yourPassword" required>
-            <div class="invalid-feedback">Please enter your password!</div>
+            <input type="password" name="password" class="form-control" id="yourPassword" >
+            <div class="invalid-feedback">Please enter your Password!</div>
           </div>
 
           <div class="col-12">
@@ -59,6 +65,7 @@
 
   </div>
 </div>
+
 
 
 

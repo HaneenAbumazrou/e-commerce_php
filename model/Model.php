@@ -119,7 +119,7 @@ class Model
     }
     $query .= "WHERE $this->pk=$pk";
 
-    return $query;
+
 
     try {
       $stmt = $this->conn->prepare($query);

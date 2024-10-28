@@ -33,7 +33,7 @@ function validateProduct($data)
         $_SESSION["add_product_errors"]["description_error"] = "The description field is required.";
     }
 
-    if (empty($data["category"])) {
+    if (empty($data["category"]) || $data["category"] == "Select") {
         $result = false;
         $_SESSION["add_product_errors"]["category_error"] = "The category field is required.";
     }

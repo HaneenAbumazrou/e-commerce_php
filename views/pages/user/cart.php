@@ -4,7 +4,7 @@
 ?>
 
 
-	<div class="hero-wrap hero-bread" style="background-image: url('./public/user/assets/images/bg_1.jpg');">
+	<div class="hero-wrap hero-bread" style="background-image: url('/public/user/assets/images/bg_1.jpg');">
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
@@ -36,7 +36,7 @@
 									<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 									
 									<td class="image-prod"><div class="img"
-									style="background-image:url(./public/user/assets/images/product-3.jpg);"></div></td>
+									style="background-image:url(/public/user/assets/images/product-3.jpg);"></div></td>
 									
 									<td class="product-name">
 										<h3>Bell Pepper</h3>
@@ -58,7 +58,7 @@
 									<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 									
 									<td class="image-prod">
-										<div class="img"style="background-image:url(./public/user/assets/images/product-4.jpg);"></div>
+										<div class="img"style="background-image:url(/public/user/assets/images/product-4.jpg);"></div>
 									</td>
 									
 									<td class="product-name">

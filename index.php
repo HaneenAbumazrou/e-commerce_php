@@ -53,7 +53,11 @@ $user_routes = [
   "/product" => "views/pages/user/product.php",
   "/contact-us" => "views/pages/user/contact.php",
   "/user/wishlist" => "views/pages/user/wishlist.php",
+  "/login" => "controller/user/Auth/logins.php",
+  "/register" => "controller/user/Auth/register.php",
   "/404" => "views/pages/404.php",
+
+  "/search/result" => "controller/user/Search/result.php",
 ];
 
 

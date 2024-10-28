@@ -19,3 +19,6 @@
 <!-- Show Admin -->
 <script src="/public/admin/assets/js/show/show.js"></script>
 
+
+<!-- dashboard-->
+<script src="/public/admin/assets/js/dashboard/dashboard.js"></script>

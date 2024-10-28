@@ -1,43 +1,50 @@
 <?php
 
-
-
-
 require "./model/Model.php";
 
-class Product {
-
+class Product
+{
   private $model;
 
-  function __construct(){
+  public function __construct()
+  {
     $this->model = new Model();
     $this->model->set_table_name("products");
   }
 
-
-  public function create($data){
+  // Create a new product
+  public function create($data)
+  {
     return $this->model->create($data);
   }
 
-  public function update(array $data, $pk){
+  // Update an existing product
+  public function update(array $data, $pk)
+  {
     return $this->model->update($data, $pk);
   }
 
-  public function select($pk, $operator,  ...$data){
-    return $this->model->select($pk, $operator,  ...$data);
+  // Select specific fields based on conditions
+  public function select($pk, $operator, ...$data)
+  {
+    return $this->model->select($pk, $operator, ...$data);
   }
 
-  public function where($query){
+  // Find records using a custom query
+  public function where($query)
+  {
     return $this->model->where($query);
   }
 
-  public function delete($pk){
+  // Delete a product by primary key
+  public function delete($pk)
+  {
     return $this->model->delete($pk);
   }
 
-  public function find($pk){
+  // Find a product by primary key
+  public function find($pk)
+  {
     return $this->model->find($pk);
   }
-
-
 }

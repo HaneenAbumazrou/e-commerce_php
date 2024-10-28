@@ -3,7 +3,7 @@ require "./controller/admin/admins/AdminController.php";
 
 
 $admin = new AdminController();
-$admins = $admin->index();
+$all_admins = $admin->index();
 
 // dd($admins);
 

@@ -63,12 +63,17 @@ $admin_routes = [
   "/admin/dashboard" => "controller/admin/dashboard.php",
 
   ## Auth
+
   "/admin/login" => "views/pages/admin/Login/login.php",
+
+  // "/admin/login" => "views/pages/admin/Login/login.php",
+  "/admin/login" => "controller/admin/login/login.php",
 
   // admins
   "/admin/admins" => "controller/admin/admins/index.php",
   "/admin/admins/create" => "controller/admin/admins/create.php",
-  "/admin/admins/show" => "views/pages/admin/admins/show.php",
+  "/admin/admins/show" => "controller/admin/admins/show.php",
+  "/admin/admins/delete" => "controller/admin/admins/delete.php",
   "/admin/admins/profile" => "controller/admin/admins/admin-profile.php",
 
 
@@ -84,9 +89,21 @@ $admin_routes = [
 
   // products
   "/admin/products" => "views/pages/admin/products/index.php",
+
   "/admin/products/create" => "controller/admin/products/create.php",
   "/admin/products/edit" => "controller/admin/products/update.php",
   "/admin/products/show" => "controller/admin/products/show.php",
+
+  "/admin/products/create" => "views/pages/admin/products/create.php",
+  "/admin/products/edit" => "views/pages/admin/products/update.php",
+  "/admin/products/show" => "views/pages/admin/products/show.php",
+  
+  
+  // coupons
+  "/admin/coupons" => "controller/admin/coupons/index.php",
+  "/admin/coupons/create" => "controller/admin/coupons/create.php",
+  "/admin/coupons/update" => "controller/admin/coupons/update.php",
+  "/admin/coupons/delete" => "controller/admin/coupons/delete.php",
 
   "/admin/404" => "views/pages/admin/404.php",
 

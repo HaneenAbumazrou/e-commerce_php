@@ -23,4 +23,25 @@ class AdminController {
   }
 
 
+<<<<<<< Updated upstream
+=======
+  public function update($data, $id){
+    $admin = new Admin();
+    $admin->update($data, $id);
+    $this->admin->create($data);
+
+  }
+
+  public function where($query){
+    $admin = new Admin();
+    $admins = $admin->where($query);
+    return $admins;
+  }
+
+  public function delete($id){
+    $admin = new Admin();
+    $admin->delete($id);
+  }
+
+>>>>>>> Stashed changes
 }

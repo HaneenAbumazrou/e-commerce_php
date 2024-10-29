@@ -75,6 +75,10 @@ $admin_routes = [
   "/admin/admins/show" => "controller/admin/admins/show.php",
   "/admin/admins/delete" => "controller/admin/admins/delete.php",
   "/admin/admins/profile" => "controller/admin/admins/admin-profile.php",
+
+  //orders
+  "/admin/orders" => "controller/admin/orders/order.php",
+  "/admin/orders/show" => "controller/admin/orders/show.php",
   
   
   // users

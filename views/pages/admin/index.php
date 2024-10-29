@@ -5,7 +5,6 @@
 ?>
 
 
-
   <div class="pagetitle">
     <h1>Dashboard</h1>
     <nav>
@@ -21,7 +20,6 @@
 
       <!-- Left side columns -->
            <!-- Sales Card -->
-
       <div class="col-md-12 col-lg-8">
         <div class="row">
 
@@ -45,6 +43,7 @@
                     </div>
                     <div class="ps-3">
                         <h6><?php echo $salesData['current']; ?></h6>
+                        
                         <span class="<?php echo $salesPercentageChange < 0 ? 'text-danger' : 'text-success'; ?> small pt-1 fw-bold">
                             <?php echo abs($salesPercentageChange); ?>%
                         </span>

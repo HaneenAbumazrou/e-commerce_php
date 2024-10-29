@@ -9,9 +9,7 @@
 <script src="/public/admin/assets/vendor/php-email-form/validate.js"></script>
 
 <!-- Template Main JS File -->
-<<<<<<< Updated upstream
-<script src="/public/admin/assets/js/main.js"></script>
-=======
+
 <script src="/public/admin/assets/js/main.js"></script>
 
 <!-- Admin login -->
@@ -22,4 +20,8 @@
 <!-- Show Admin -->
 <script src="/public/admin/assets/js/show/show.js"></script>
 
->>>>>>> Stashed changes
+
+
+
+<!-- dashboard-->
+<script src="/public/admin/assets/js/dashboard/dashboard.js"></script>

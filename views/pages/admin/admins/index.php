@@ -46,24 +46,18 @@
             </tr>
           </thead>
           <tbody>
+          <?php foreach ($all_admins as $index => $admin): ?>
+
             <tr>
-              <th scope="row">1</th>
-              <td>Brandon Jacob</td>
-              <td>brandoo</td>
-              <td>brand@beranm.com</td>
-              <td>Super Admin</td>
-              <td>20-10-2017</td>
-              <td><a href="/admin/admins/show?id=1" class="btn btn-primary">Show</a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Brandon Jacob</td>
-              <td>brandoo</td>
-              <td>brand@beranm.com</td>
-              <td>Admin</td>
-              <td>20-10-2017</td>
-              <td><a href="/admin/admins/show?id=1" class="btn btn-primary">Show</a></td>
-            </tr>
+            <th scope="row"><?= $index + 1 ?></th>
+                    <td><?= $admin['first_name'] . ' ' . $admin['last_name'] ?></td>
+                    <td><?= $admin['username'] ?></td>
+                    <td><?= $admin['email'] ?></td>
+                    <td><?= $admin['role'] ?></td>
+                    <td><?= date("d-m-Y", strtotime($admin['created_at'])) ?></td>
+                    <td><a href="./admins/show?id=<?= $admin['id'] ?>" class="btn btn-primary">Show</a></td>
+                    </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>

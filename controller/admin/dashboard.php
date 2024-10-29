@@ -13,58 +13,6 @@ $dashboardController = new DashboardController();
 
 
 
-
-// // Get filters for each card from the URL parameters, with defaults
-// $salesFilter = $_GET['sales_filter'] ?? 'today';
-// $revenueFilter = $_GET['revenue_filter'] ?? 'today';
-// $customersFilter = $_GET['customers_filter'] ?? 'today';
-// $recentSalesFilter = $_GET['recent_sales_filter'] ?? 'today';
-
-// // Helper function to execute queries based on the filter
-// function getDataByFilter($filter, $dashboardController, $type) {
-//     switch ($filter) {
-//         case 'today':
-//             $dateCondition = "DATE(created_at) = CURDATE()";
-//             break;
-//         case 'month':
-//             $dateCondition = "MONTH(created_at) = MONTH(CURDATE()) AND YEAR(created_at) = YEAR(CURDATE())";
-//             break;
-//         case 'year':
-//             $dateCondition = "YEAR(created_at) = YEAR(CURDATE())";
-//             break;
-//         default:
-//             return [];
-//     }
-
-//     switch ($type) {
-//         case 'sales':
-//             $query = "SELECT COUNT(id) AS count FROM orders WHERE status = 'completed' AND $dateCondition";
-//             break;
-//         case 'revenue':
-//             $query = "SELECT SUM(total_amount) AS total FROM orders WHERE status = 'completed' AND $dateCondition";
-//             break;
-//         case 'customers':
-//             $query = "SELECT COUNT(id) AS count FROM users WHERE $dateCondition";
-//             break;
-//         case 'recent_sales':
-//             $query = "SELECT o.id AS order_id, u.username AS customer, p.name AS product, oi.price AS price, o.status
-//                       FROM orders o
-//                       JOIN order_items oi ON o.id = oi.order_id
-//                       JOIN products p ON oi.product_id = p.id
-//                       JOIN users u ON o.user_id = u.id
-//                       WHERE $dateCondition";
-//             break;
-//     }
-
-//     return $dashboardController->where($query);
-// }
-
-// // Get data for each card
-// $salesCount = getDataByFilter($salesFilter, $dashboardController, 'sales')['count'] ?? 0;
-// $revenueTotal = getDataByFilter($revenueFilter, $dashboardController, 'revenue')['total'] ?? 0;
-// $customerCount = getDataByFilter($customersFilter, $dashboardController, 'customers')['count'] ?? 0;
-// $recentSalesData = getDataByFilter($recentSalesFilter, $dashboardController, 'recent_sales');
-
 // Default filters
 $salesFilter = $_GET['sales_filter'] ?? 'today';
 $revenueFilter = $_GET['revenue_filter'] ?? 'today';
@@ -230,12 +178,12 @@ function getTopSellingData($filter, $dashboardController) {
     // Execute query
     $result = $dashboardController->where($query);
 
-    if ($result === false) {
-        echo "Error executing query: " . $dashboardController->error();
-        return [];
-    } else if (empty($result)) {
-        echo "Query executed successfully, but no results were found.";
-    }
+    // if ($result === false) {
+    //     echo "Error executing query: " . $dashboardController->error();
+    //     return [];
+    // } else if (empty($result)) {
+    //     echo "Query executed successfully, but no results were found.";
+    // }
 
     return is_array($result) ? $result : [];
 

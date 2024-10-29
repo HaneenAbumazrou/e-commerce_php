@@ -80,7 +80,10 @@ $admin_routes = [
   "/admin/admins/delete" => "controller/admin/admins/delete.php",
   "/admin/admins/profile" => "controller/admin/admins/admin-profile.php",
 
-
+  //orders
+  "/admin/orders" => "controller/admin/orders/order.php",
+  "/admin/orders/show" => "controller/admin/orders/show.php",
+  
   // users
   "/admin/users" => "views/pages/admin/users/index.php",
   "/admin/users/order" => "views/pages/admin/users/order.php",

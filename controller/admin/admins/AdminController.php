@@ -43,6 +43,7 @@ class AdminController {
   public function update($data, $id){
     $admin = new Admin();
     $admin->update($data, $id);
+
     // $this->admin->create($data);
 
   }

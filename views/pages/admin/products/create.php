@@ -20,7 +20,7 @@ ob_start();
 <div class="row">
   <div class="col-sm-12 col-lg-6">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body py-3">
 
 
         <?php if (isset($_SESSION["success_message"])) : ?>
@@ -32,7 +32,7 @@ ob_start();
 
         <!-- General Form Elements -->
         <form action="/admin/products/create" method="POST" enctype="multipart/form-data">
-          <div class="row mb-3">
+          <div class="mt-3 row mb-3">
             <label class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="name" value="<?php echo $_POST["name"] ?? null ?>">
@@ -77,9 +77,9 @@ ob_start();
             <div class="col-sm-10">
               <select class="form-select" aria-label="Default select example" name="category" value="<?php echo $_POST["category"] ?? null ?>">
                 <option selected>Select</option>
-                <option value=" 1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <?php foreach ($all_categories as $category_data): ?>
+                  <option value="<?= $category_data["id"] ?>"><?= $category_data["name"] ?></option>
+                <?php endforeach; ?>
               </select>
               <span class="text-danger">
                 <?= $_SESSION["add_product_errors"]["category_error"] ?? null ?>

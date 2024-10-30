@@ -2,6 +2,9 @@
 session_start();
 
 require "./controller/admin/products/ProductController.php";
+require "./controller/admin/categories/CategoryController.php";
+
+$all_categories = (new CategoryController())->index();
 
 /**
  * Validates the product data.
@@ -33,7 +36,7 @@ function validateProduct($data)
         $_SESSION["add_product_errors"]["description_error"] = "The description field is required.";
     }
 
-    if (empty($data["category"]) || $data["category"] == "Select") {
+    if (empty($data["category"])) {
         $result = false;
         $_SESSION["add_product_errors"]["category_error"] = "The category field is required.";
     }
@@ -65,8 +68,7 @@ function clean($data)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $productController = new ProductController();
 
-    // validateProduct($_POST);
-    // dd($_SESSION["add_product_errors"]);
+    // dd($_POST);
 
     if (validateProduct($_POST)) {
         // Clean the input data
@@ -79,18 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Handle file uploads
         $imagePaths = [];
 
-        // dd($_FILES['images']);
-        foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
-            $fileName = basename($_FILES['images']['name'][$key]);
-            $targetFilePath = "./public/admin/assets/images/products/" . uniqid('', true) . $fileName;
-
-            if (move_uploaded_file($tmpName, $targetFilePath)) {
-                $imagePaths[] = $targetFilePath;
-            } else {
-                $_SESSION["add_product_errors"]["images_error"] = "Failed to upload image: " . $fileName;
-            }
-        }
-
         // Create product
         $productData = [
             "name" => $name,
@@ -101,7 +91,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ];
 
 
-        $result = $productController->create($productData);
+        $product_id = $productController->create($productData);
+
+
+
+        // dd($_FILES['images']);
+        foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
+            $fileName = basename($_FILES['images']['name'][$key]);
+            $targetFilePath = "./public/admin/assets/images/products/" . uniqid('', true) . $fileName;
+
+            // Create product image
+            $productImageData = [
+                "name" => $fileName,
+                "path" => $targetFilePath,
+                "products_id" => $product_id,
+            ];
+
+
+            $productController = new ProductController();
+            $productController->createImage($productImageData);
+
+
+            if (move_uploaded_file($tmpName, $targetFilePath)) {
+                $imagePaths[] = $targetFilePath;
+            } else {
+                $_SESSION["add_product_errors"]["images_error"] = "Failed to upload image: " . $fileName;
+            }
+        }
+
+
+
+
+
+
+        unset($_POST);
+
         $_SESSION["success_message"] = "Product added successfully!";
 
         // if ($result) {
@@ -114,6 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // dd($_SESSION["add_product_errors"]);
     }
 }
+
 
 require "./views/pages/admin/products/create.php";
 unset($_SESSION["add_product_errors"]);

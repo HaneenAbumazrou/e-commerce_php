@@ -55,6 +55,7 @@ class Model
 
     try {
       $this->conn->exec($query);
+      return $this->conn->lastInsertId();
     } catch (PDOException $error) {
       echo $error->getMessage();
     }

@@ -53,7 +53,11 @@ $user_routes = [
   "/product" => "views/pages/user/product.php",
   "/contact-us" => "views/pages/user/contact.php",
   "/user/wishlist" => "views/pages/user/wishlist.php",
+  "/login" => "controller/user/Auth/logins.php",
+  "/register" => "controller/user/Auth/register.php",
   "/404" => "views/pages/404.php",
+
+  "/search/result" => "controller/user/Search/result.php",
 ];
 
 
@@ -76,7 +80,10 @@ $admin_routes = [
   "/admin/admins/delete" => "controller/admin/admins/delete.php",
   "/admin/admins/profile" => "controller/admin/admins/admin-profile.php",
 
-
+  //orders
+  "/admin/orders" => "controller/admin/orders/order.php",
+  "/admin/orders/show" => "controller/admin/orders/show.php",
+  
   // users
   "/admin/users" => "views/pages/admin/users/index.php",
   "/admin/users/order" => "views/pages/admin/users/order.php",

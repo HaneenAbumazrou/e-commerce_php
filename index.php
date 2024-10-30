@@ -90,22 +90,19 @@ $admin_routes = [
   "/admin/users/show" => "views/pages/admin/users/show.php",
 
   // categories
-  "/admin/categories" => "views/pages/admin/categories/index.php",
-  "/admin/categories/create" => "views/pages/admin/categories/create.php",
-  "/admin/categories/edit" => "views/pages/admin/categories/update.php",
+  "/admin/categories" => "controller/admin/categories/create.php",
+  "/admin/categories/edit" => "controller/admin/categories/update.php",
 
   // products
-  "/admin/products" => "views/pages/admin/products/index.php",
+  "/admin/products" => "controller/admin/products/index.php",
 
   "/admin/products/create" => "controller/admin/products/create.php",
   "/admin/products/edit" => "controller/admin/products/update.php",
   "/admin/products/show" => "controller/admin/products/show.php",
 
-  "/admin/products/create" => "views/pages/admin/products/create.php",
-  "/admin/products/edit" => "views/pages/admin/products/update.php",
-  "/admin/products/show" => "views/pages/admin/products/show.php",
-  
-  
+
+
+
   // coupons
   "/admin/coupons" => "controller/admin/coupons/index.php",
   "/admin/coupons/create" => "controller/admin/coupons/create.php",

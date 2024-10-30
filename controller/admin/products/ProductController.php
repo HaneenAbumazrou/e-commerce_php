@@ -2,8 +2,11 @@
 
 require_once "./model/Product.php";
 
+require_once "./model/ProductImage.php";
+
 class ProductController
 {
+
     private $product;
 
     public function __construct()
@@ -21,6 +24,20 @@ class ProductController
     public function create($data)
     {
         return $this->product->create($data);
+    }
+
+    // Create a new product image
+    public function createImage($data)
+    {
+        $productImages = new ProductImage();
+        $productImages->create($data);
+    }
+
+    // Show product image
+    public function showImage($id)
+    {
+        $productImages = new ProductImage();
+        return $productImages->where("SELECT * FROM product_images WHERE products_id = $id");
     }
 
     // Show details of a specific product

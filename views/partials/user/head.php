@@ -26,5 +26,7 @@
     <link rel="stylesheet" href="/public/user/assets/css/icomoon.css">
     <link rel="stylesheet" href="/public/user/assets/css/style.css">
 
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="/public/user/assets/css/auth.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>

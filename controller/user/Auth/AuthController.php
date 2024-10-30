@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 
 require "./model/User.php";
@@ -7,26 +8,28 @@ require "./model/User.php";
 class AuthController{
 
     public function login($email, $password) {
-        session_start();
-        $userModel = new User();
-        $users = $userModel->where("SELECT * FROM users WHERE email='$email'");
-        $user=$users[0];
+        $user = new User();
+        $user_rec = $user->where("SELECT * FROM users WHERE email='$email'");
 
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['email'] = $user['email'];
-            return true;
-            
+        if($user_rec){
+            $user = $user_rec[0];
+            if (password_verify($password, $user['password'])) {
+                $this->add_to_session($user);
+                return true;
+            }
         }
+
+
+        $_SESSION["login_errors"]["email_error"] = "Your email or password is incorrect.";
+
         return false;
     }
 
-    public function register($userData) {
-        $userModel = new User();
-        $userData['password'] = password_hash($userData['password'], PASSWORD_DEFAULT);
-
-        return $userModel->create($userData);
+    public function register($data) {
+        $user_id =  (new User())->create($data);
+        $data["user_id"] = $user_id;
+        $this->add_to_session($data);
+        return $user_id;
     }
 
     public function logout() {
@@ -36,9 +39,15 @@ class AuthController{
         header("Location: /");
         exit;
     }
-      
-        
 
+
+    public function add_to_session($data){
+        $_SESSION["user"]['user_id'] = $data['id'];
+        $_SESSION["user"]['first_name'] = $data['first_name'];
+        $_SESSION["user"]['last_name'] = $data['last_name'];
+        $_SESSION["user"]['username'] = $data['username'];
+        $_SESSION["user"]['email'] = $data['email'];
+    }
 }
 
 

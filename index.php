@@ -52,11 +52,12 @@ $user_routes = [
   "/about-us" => "views/pages/user/about.php",
   "/user/cart" => "views/pages/user/cart.php",
   "/products/categories" => "views/pages/user/category.php",
-  "/user/order/checkout" => "views/pages/user/checkout.php",
+  "/user/order/checkout" => "controller/user/Checkout/create.php",
   "/product" => "views/pages/user/product.php",
   "/contact-us" => "views/pages/user/contact.php",
   "/user/wishlist" => "views/pages/user/wishlist.php",
   "/login" => "controller/user/Auth/logins.php",
+  "/test" => "controller/user/Checkout/CheckoutController.php",
   "/register" => "controller/user/Auth/register.php",
   "/404" => "views/pages/404.php",
 

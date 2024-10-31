@@ -12,8 +12,8 @@
     <li class="nav-item">
       <a class="nav-link <?= (isset($orders)) ? $orders : "" ?>" href="/admin/orders">
         <i class="bi bi-grid"></i>
-        <span style="width: 100%;">Pinding Orders</span>
-        <i class="bi bi-exclamation-circle-fill text-danger"></i>
+        <span style="width: 100%;">Orders</span>
+        <!-- <i class="bi bi-exclamation-circle-fill text-danger"></i> -->
       </a>
     </li>
 

@@ -2,6 +2,9 @@
 <nav class="navbar navbar-expand-md navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	<div class="container">
 		<a class="navbar-brand" href="index.php">Vegefoods</a>
+		<form method="GET" action="/search/result">
+		<input style='border:0;box-shadow: 1px 1px 6px #d9d9d9;border-radius:5px;padding:4px;padding-left:8px;width:300px' type="text" class="" placeholder="Search" name="search">
+		</form>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="oi oi-menu"></span> Menu
 		</button>

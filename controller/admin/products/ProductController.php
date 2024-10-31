@@ -47,7 +47,7 @@ class ProductController
     }
 
     // Update an existing product
-    public function update($id, $data)
+    public function update($data, $id)
     {
         return $this->product->update($data, $id);
     }

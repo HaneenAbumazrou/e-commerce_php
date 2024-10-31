@@ -90,7 +90,7 @@ $admin_routes = [
   "/admin/products" => "controller/admin/products/index.php",
 
   "/admin/products/create" => "controller/admin/products/create.php",
-  "/admin/products/edit" => "controller/admin/products/update.php",
+  "/admin/products/update" => "controller/admin/products/update.php",
   "/admin/products/show" => "controller/admin/products/show.php",
 
 

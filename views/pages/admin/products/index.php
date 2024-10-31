@@ -73,7 +73,7 @@ ob_start();
                           </td>
                           <td>
                             <a href="/admin/products/show?id=<?php echo $product["id"]; ?>" class="btn btn-primary">Show</a>
-                            <a href="./update.php?id=<?php echo $product["id"]; ?>" class="btn btn-success">Update</a>
+                            <a href="/admin/products/update?id=<?php echo $product["id"]; ?>" class="btn btn-success">Update</a>
                           </td>
                         </tr>
                       <?php endif; ?>

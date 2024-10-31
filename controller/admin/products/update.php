@@ -1,96 +1,167 @@
 <?php
-$title = 'Edit Product';
-$products = 'active';
-ob_start();
+session_start();
 
-// Assume $product is fetched from the database using the product ID passed as a parameter
-// Example: $product = $productController->getById($productId);
+require "./controller/admin/products/ProductController.php";
+require "./controller/admin/categories/CategoryController.php";
 
-?>
+if (isset($_GET['id'])) {
+    $id = (int)$_GET['id']; // Sanitize the ID input to prevent SQL injection
 
-<div class="pagetitle">
-    <h1>Edit Product</h1>
-    <nav>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">Dashboard</li>
-            <li class="breadcrumb-item">Products</li>
-            <li class="breadcrumb-item active">Edit</li>
-        </ol>
-    </nav>
-</div>
+    // Now you can use $id to get the product and images
+    $productController = new ProductController();
+    $product = $productController->show($id);
+    $images = $productController->showImage($id);
+    $all_categories = (new CategoryController())->index();
+} else {
+    // Handle the case where the ID is not provided
+    echo "Error: No product ID provided.";
+    exit;
+}
 
-<div class="row">
-    <div class="col-sm-12 col-lg-6">
-        <div class="card">
-            <div class="card-body">
 
-                <!-- General Form Elements -->
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?= htmlspecialchars($product['id']) ?>">
+function validateProduct($data)
+{
+    $result = true;
 
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="name" value="<?= htmlspecialchars($product['name']) ?>">
-                        </div>
-                    </div>
+    if (empty($data["name"])) {
+        $result = false;
+        $_SESSION["add_product_errors"]["name_error"] = "The name field is required.";
+    }
 
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Images</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="file" id="formFile" multiple name="images[]">
-                            <small class="text-muted">Leave empty to keep existing images</small>
-                        </div>
-                    </div>
+    if (empty($data["price"]) || !is_numeric($data["price"]) || $data["price"] < 0) {
+        $result = false;
+        $_SESSION["add_product_errors"]["price_error"] = "The price must be a valid number greater than or equal to 0.";
+    }
 
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Price</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="number" id="price" min="0" name="price" value="<?= htmlspecialchars($product['price']) ?>">
-                        </div>
-                    </div>
+    if (empty($data["stock_quantity"]) || !is_numeric($data["stock_quantity"]) || $data["stock_quantity"] < 0) {
+        $result = false;
+        $_SESSION["add_product_errors"]["stock_quantity_error"] = "The stock quantity must be a valid number greater than or equal to 0.";
+    }
 
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Stock Quantity</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="number" id="stock_quantity" min="0" name="stock_quantity" value="<?= htmlspecialchars($product['stock_quantity']) ?>">
-                        </div>
-                    </div>
+    if (empty($data["description"])) {
+        $result = false;
+        $_SESSION["add_product_errors"]["description_error"] = "The description field is required.";
+    }
 
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Category</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" name="category" aria-label="Default select example">
-                                <option value="" disabled>Select</option>
-                                <option value="1" <?= $product['category'] == 1 ? 'selected' : '' ?>>One</option>
-                                <option value="2" <?= $product['category'] == 2 ? 'selected' : '' ?>>Two</option>
-                                <option value="3" <?= $product['category'] == 3 ? 'selected' : '' ?>>Three</option>
-                            </select>
-                        </div>
-                    </div>
+    if (empty($data["category"])) {
+        $result = false;
+        $_SESSION["add_product_errors"]["category_error"] = "The category field is required.";
+    }
 
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Description</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" style="height: 100px" name="description"><?= htmlspecialchars($product['description']) ?></textarea>
-                        </div>
-                    </div>
+    // Validate image upload
+    // if (empty($_FILES["images"]["name"][0])) {
+    //     $result = false;
+    //     $_SESSION["add_product_errors"]["images_error"] = "At least one image is required.";
+    // }
 
-                    <div class="row my-3">
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-10 d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Update Product</button>
-                        </div>
-                    </div>
+    return $result;
+}
 
-                </form><!-- End General Form Elements -->
+function clean($data)
+{
+    $data = trim($data);
+    $data = htmlspecialchars($data);
+    $data = strip_tags($data);
 
-            </div>
-        </div>
-    </div>
-</div>
+    return $data;
+}
 
-<?php
-$content = ob_get_clean();
-require "./views/pages/admin/layout.php";
-?>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $productController = new ProductController($id);
+
+    // dd($_POST);
+
+    if (validateProduct($_POST)) {
+        // Clean the input data
+        $name = clean($_POST["name"]);
+        $price = clean($_POST["price"]);
+        $stock_quantity = clean($_POST["stock_quantity"]);
+        $category = clean($_POST["category"]);
+        $description = clean($_POST["description"]);
+
+        // Handle file uploads
+        $imagePaths = [];
+
+        // Create product
+        $productData = [
+            "name" => $name,
+            "price" => $price,
+            "stock_quantity" => $stock_quantity,
+            "category_id" => $category,
+            "description" => $description,
+        ];
+
+        $product_id = $productController->update($productData, $id);
+
+
+
+        // dd($_FILES['images']);
+        if (!empty($_FILES["images"]["name"][0])) {
+
+            // Use unlink() function to delete a file 
+            $file_pointer = "/public/admin/assets/images/products/";
+
+            $images = (new ProductController)->showImage($_GET['id']);
+
+            foreach ($images as $image) {
+                unlink($image["path"]);
+                (new ProductImage)->delete($image['id']);
+            }
+            // dd($images);
+            foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
+                $fileName = basename($_FILES['images']['name'][$key]);
+                $targetFilePath = "./public/admin/assets/images/products/" . uniqid('', true) . $fileName;
+
+                // Create product image
+                $productImageData = [
+                    "name" => $fileName,
+                    "path" => $targetFilePath,
+                    "products_id" => $_GET['id'],
+                ];
+
+
+                $productController = new ProductController();
+                $productController->createImage($productImageData);
+
+
+                if (move_uploaded_file($tmpName, $targetFilePath)) {
+                    $imagePaths[] = $targetFilePath;
+                } else {
+                    $_SESSION["add_product_errors"]["images_error"] = "Failed to upload image: " . $fileName;
+                }
+            }
+        } else {
+            echo (" has been deleted");
+        }
+
+
+
+
+
+
+
+
+        header('Location: /admin/products/show?id=' . $_GET['id']);
+        die;
+    }
+
+
+
+
+
+    unset($_POST);
+
+    $_SESSION["success_message"] = "Product updated successfully!";
+
+    // if ($result) {
+    //     header("Location: /admin/products");
+    //     exit;
+    // } else {
+    //     $_SESSION["error_message"] = "Failed to add the product. Please try again.";
+    // }
+} else {
+    // dd($_SESSION["add_product_errors"]);
+}
+
+
+require "./views/pages/admin/products/update.php";

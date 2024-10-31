@@ -1,5 +1,7 @@
 <?php
 
+require "./model/Admin.php";
+
 require "./model/Order.php";
 // require "./model/OrderItem.php";
 // require "./model/User.php";
@@ -15,7 +17,3 @@ class DashboardController{
     }
 
 }
-
-
-
-

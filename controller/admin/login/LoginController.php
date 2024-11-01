@@ -1,4 +1,6 @@
-<?php 
+<?php
+  
+
 
 require "./model/Admin.php";
 
@@ -17,6 +19,11 @@ class LoginController{
         $result = $admin->where($query); 
         
         return $result ? $result[0] : null;
+    }
+
+    public function logout(){
+        unset($_SESSION["admin"]);
+        unset($_SESSION);
     }
     
 }

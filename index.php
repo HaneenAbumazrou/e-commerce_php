@@ -1,10 +1,10 @@
 <?php
-
+session_start();
 use Dotenv\Dotenv;
-
 require_once "./function/admin_404.php";
 require_once "./function/is_login.php";
 require_once "./function/dd.php";
+require_once "./function/is_user_auth.php";
 require "./vendor/autoload.php";
 
 $dotenv = Dotenv::createImmutable(__DIR__);
@@ -23,10 +23,12 @@ function check()
 
   $request_parts = explode("/", $_SERVER["REQUEST_URI"]);
   $request_parts_q = explode("?", $_SERVER["REQUEST_URI"]);
+  // dd($request_parts_q[0]);
 
   if ($request_parts[1] != "admin") {
     if (array_key_exists($request_parts_q[0], $user_routes)) {
       require $user_routes[$request_parts_q[0]];
+      
     } else {
       require $user_routes["/404"];
     }
@@ -70,10 +72,9 @@ $admin_routes = [
 
   ## Auth
 
-  "/admin/login" => "views/pages/admin/Login/login.php",
 
-  // "/admin/login" => "views/pages/admin/Login/login.php",
   "/admin/login" => "controller/admin/login/login.php",
+  "/admin/logout" => "controller/admin/login/logout.php",
 
   // admins
   "/admin/admins" => "controller/admin/admins/index.php",

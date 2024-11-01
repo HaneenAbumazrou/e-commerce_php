@@ -1,5 +1,8 @@
 <?php
-
+  if(!isset($_SESSION["admin"])) {
+    header("Location: /admin/login");
+    die;
+  }
 require "./model/Admin.php";
 
 require "./model/Order.php";

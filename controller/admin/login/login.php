@@ -1,5 +1,9 @@
 <?php
-session_start();
+  if(isset($_SESSION["admin"])) {
+    header("Location: /admin/dashboard");
+    die;
+  }
+// dd("FROM LOGIN PAGE");
 require "./controller/admin/login/LoginController.php";
 
 $error = false;
@@ -15,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($admin && password_verify($password, $admin['password'])) {
         unset($admin['password']);
 
-      
+
         $_SESSION['admin'] = $admin;
 
         if ($remember) {

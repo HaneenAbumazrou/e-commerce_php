@@ -36,7 +36,7 @@
 
 
 				<li class="nav-item"><a href="/pages/about.php" class="nav-link">About</a></li>
-				<li class="nav-item"><a href="/pages/contact.php" class="nav-link">Contact</a></li>
+				<li class="nav-item"><a href="/contact-us" class="nav-link">Contact</a></li>
 				<li class="nav-item cta cta-colored">
 					<a href="/user/cart" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a>
 				</li>

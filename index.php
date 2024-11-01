@@ -58,7 +58,9 @@ $user_routes = [
   "/products/categories" => "controller/admin/categories/show.php",
   "/user/order/checkout" => "controller/user/Checkout/create.php",
   "/product" => "controller/admin/products/show-user.php",
-  "/contact-us" => "views/pages/user/contact.php",
+
+  
+  "/contact-us" => "controller/user/Contact/create.php",
 
   "/user/wishlist" => "controller/user/Wishlist/show.php",
   "/user/wishlist/create" => "controller/user/Wishlist/create.php",
@@ -121,6 +123,13 @@ $admin_routes = [
   "/admin/coupons/create" => "controller/admin/coupons/create.php",
   "/admin/coupons/update" => "controller/admin/coupons/update.php",
   "/admin/coupons/delete" => "controller/admin/coupons/delete.php",
+  
+  
+  // messages
+  "/admin/messages" => "controller/admin/messages/index.php",
+  "/admin/messages/show" => "controller/admin/messages/show.php",
+  "/admin/messages/update" => "controller/admin/messages/update.php",
+
 
   "/admin/404" => "views/pages/admin/404.php",
 

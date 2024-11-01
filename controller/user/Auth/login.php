@@ -1,6 +1,9 @@
 <?php
 require './controller/user/Auth/AuthController.php';
-
+if(isset($_SESSION["user"])) {
+    header("Location: /");
+    die;
+}
 
 /**
  * is empty

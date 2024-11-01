@@ -1,7 +1,7 @@
 <?php
 	$title = 'E-commerce';
 	ob_start();
-	session_start();
+	
 ?>
 
 

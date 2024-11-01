@@ -1,6 +1,6 @@
 <?php
 require "./controller/admin/coupons/CouponController.php";
-session_start();
+
 
 $coupon = (new CouponController)->find($_GET["coupon_id"]);
 // check if id exsits and correct.

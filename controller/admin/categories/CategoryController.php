@@ -1,4 +1,8 @@
 <?php
+  if(!isset($_SESSION["admin"])) {
+    header("Location: /admin/login");
+    die;
+  }
 require "./model/Category.php";
 
 class CategoryController

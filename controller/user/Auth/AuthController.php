@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 
 require "./model/User.php";
@@ -33,7 +33,7 @@ class AuthController{
     }
 
     public function logout() {
-        session_start();
+        
         session_unset();
         session_destroy();
         header("Location: /");

@@ -43,4 +43,9 @@ class CategoryController
     {
         return strip_tags(htmlspecialchars(trim($data)));
     }
+
+
+    public function where($query){
+        return $this->category->where($query);
+    }
 }

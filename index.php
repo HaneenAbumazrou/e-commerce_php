@@ -8,9 +8,8 @@ require_once "./function/dd.php";
 require "./vendor/autoload.php";
 
 $dotenv = Dotenv::createImmutable(__DIR__);
-
-
 $dotenv->load();
+
 
 
 
@@ -48,9 +47,9 @@ $user_routes = [
   "/" => "views/pages/user/index.php",
   "/about-us" => "views/pages/user/about.php",
   "/user/cart" => "views/pages/user/cart.php",
-  "/products/categories" => "views/pages/user/category.php",
+  "/products/categories" => "controller/admin/categories/show.php",
   "/user/order/checkout" => "controller/user/Checkout/create.php",
-  "/product" => "views/pages/user/product.php",
+  "/product" => "controller/admin/products/show-user.php",
   "/contact-us" => "views/pages/user/contact.php",
   "/user/wishlist" => "views/pages/user/wishlist.php",
   "/login" => "controller/user/Auth/login.php",

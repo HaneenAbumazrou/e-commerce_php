@@ -33,7 +33,7 @@ ob_start();
       <?php endforeach; ?>
 
       <!-- Display empty placeholders if there are fewer than 4 images -->
-      <?php for ($i = count($images); $i < 4; $i++): ?>
+      <?php for ($i = count($images); $i < 1; $i++): ?>
         <div class="<?= $i === 0 ? 'col-12' : 'col-sm-12 col-lg-4' ?>">
           <img src="/public/admin/assets/images/default/download.png" class="img-fluid w-100">
         </div>
@@ -64,8 +64,10 @@ ob_start();
 
     <div class="row pt-3">
       <div class="col-lg-4">
-        <a href="/admin/products/update?id=<?php echo $product["id"]; ?>" class="btn btn-success">Update</a>
-        <a href="/admin/products/delete?id=<?php echo $product["id"]; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+        <form action="/admin/products/delete?id=<?= $product["id"] ?>" method="POST">
+          <a href="/admin/products/update?id=<?= $product["id"] ?>" class="btn btn-success">Update</a>
+          <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+        </form>
       </div>
     </div>
   </div>

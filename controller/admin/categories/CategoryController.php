@@ -43,4 +43,14 @@ class CategoryController
     {
         return strip_tags(htmlspecialchars(trim($data)));
     }
+
+    public function delete($id)
+    {
+        return $this->category->delete($id);
+    }
+
+    public function update($data, $id)
+    {
+        return $this->category->update($data, $id);
+    }
 }

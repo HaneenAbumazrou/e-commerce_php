@@ -83,7 +83,7 @@ $admin_routes = [
   //orders
   "/admin/orders" => "controller/admin/orders/order.php",
   "/admin/orders/show" => "controller/admin/orders/show.php",
-  
+
   // users
   "/admin/users" => "views/pages/admin/users/index.php",
   "/admin/users/order" => "views/pages/admin/users/order.php",
@@ -91,11 +91,13 @@ $admin_routes = [
 
   // categories
   "/admin/categories" => "controller/admin/categories/create.php",
-  "/admin/categories/edit" => "controller/admin/categories/update.php",
+  "/admin/categories/delete" => "controller/admin/categories/delete.php",
+  "/admin/categories/update" => "controller/admin/categories/update.php",
 
   // products
   "/admin/products" => "controller/admin/products/index.php",
 
+  "/admin/products/delete" => "controller/admin/products/delete.php",
   "/admin/products/create" => "controller/admin/products/create.php",
   "/admin/products/update" => "controller/admin/products/update.php",
   "/admin/products/show" => "controller/admin/products/show.php",

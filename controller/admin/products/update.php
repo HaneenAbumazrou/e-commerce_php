@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($_FILES["images"]["name"][0])) {
 
             // Use unlink() function to delete a file 
-            $file_pointer = "/public/admin/assets/images/products/";
+
 
             $images = (new ProductController)->showImage($_GET['id']);
 

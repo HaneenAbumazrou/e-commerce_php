@@ -70,10 +70,12 @@ ob_start();
             <td><img src="<?php echo ltrim($Category["image_path"], ".") . $Category["image"] ?>" width="130px" height="100px"></td>
             <td><?php echo $Category["name"] ?></td>
             <td><?php echo $Category["image"] ?></td>
-            <td>
-              <a href="./update.php" class="btn btn-success">update</a>
-              <a href="./show.php" class="btn btn-danger">Delete</a>
-            </td>
+            <form action="/admin/categories/delete?id=<?= $Category["id"] ?>" method="POST">
+              <td>
+                <a href="/admin/categories/update?id=<?php echo $Category["id"]; ?>" class="btn btn-success">Update</a>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+              </td>
+            </form>
           </tr>
         <?php endforeach; ?>
       </tbody>

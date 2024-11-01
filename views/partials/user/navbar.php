@@ -22,6 +22,19 @@
 						<a class="dropdown-item" href="/pages/checkout.php">Checkout</a>
 					</div>
 				</li>
+
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="/products/categories" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+					<div class="dropdown-menu" aria-labelledby="categories">
+						<a class="dropdown-item" href="/products/categories">All Categories</a>
+						<?php foreach($full_categories as $category): ?>
+							<a class="dropdown-item" href="/products/categories?category=<?= $category["name"] ?>"><?= $category["name"] ?></a>
+						<?php endforeach ?>
+					</div>
+				</li>
+
+
 				<li class="nav-item"><a href="/pages/about.php" class="nav-link">About</a></li>
 				<li class="nav-item"><a href="/pages/contact.php" class="nav-link">Contact</a></li>
 				<li class="nav-item cta cta-colored">

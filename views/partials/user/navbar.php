@@ -1,9 +1,9 @@
 
 <nav class="navbar navbar-expand-md navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	<div class="container">
-		<a class="navbar-brand" href="index.php">Vegefoods</a>
+		<a class="navbar-brand" href="/">Vegefoods</a>
 		<form method="GET" action="/search/result">
-		<input style='border:0;box-shadow: 1px 1px 6px #d9d9d9;border-radius:5px;padding:4px;padding-left:8px;width:300px' type="text" class="" placeholder="Search" name="search">
+			<input style='border:0;box-shadow: 1px 1px 6px #d9d9d9;border-radius:5px;padding:4px;padding-left:8px;width:300px' type="text" class="" placeholder="Search" name="search">
 		</form>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="oi oi-menu"></span> Menu
@@ -22,6 +22,19 @@
 						<a class="dropdown-item" href="/pages/checkout.php">Checkout</a>
 					</div>
 				</li>
+
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="/products/categories" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+					<div class="dropdown-menu" aria-labelledby="categories">
+						<a class="dropdown-item" href="/products/categories">All Categories</a>
+						<?php foreach($full_categories as $category): ?>
+							<a class="dropdown-item" href="/products/categories?category=<?= $category["name"] ?>"><?= $category["name"] ?></a>
+						<?php endforeach ?>
+					</div>
+				</li>
+
+
 				<li class="nav-item"><a href="/pages/about.php" class="nav-link">About</a></li>
 				<li class="nav-item"><a href="/pages/contact.php" class="nav-link">Contact</a></li>
 				<li class="nav-item cta cta-colored">

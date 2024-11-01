@@ -1,3 +1,5 @@
+<?php require_once "./function/all_categories.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

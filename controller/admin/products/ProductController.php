@@ -49,6 +49,10 @@ class ProductController
         return $this->product->find($id);
     }
 
+    public function where($query){
+        return $this->product->where($query);
+    }
+
     // Update an existing product
     public function update($id, $data)
     {

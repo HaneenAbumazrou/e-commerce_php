@@ -1,8 +1,5 @@
 <?php
-  if(!isset($_SESSION["admin"])) {
-    header("Location: /admin/login");
-    die;
-  }
+require_once "./function/is_admin_auth.php";
 require_once "./model/Product.php";
 
 require_once "./model/ProductImage.php";

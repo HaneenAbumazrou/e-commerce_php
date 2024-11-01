@@ -83,8 +83,6 @@ $admin_routes = [
   "/admin/dashboard" => "controller/admin/dashboard.php",
 
   ## Auth
-
-
   "/admin/login" => "controller/admin/login/login.php",
   "/admin/logout" => "controller/admin/login/logout.php",
 

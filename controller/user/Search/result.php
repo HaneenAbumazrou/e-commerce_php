@@ -11,12 +11,26 @@ if (isset($_GET['search'])) {
 
     // dd($safeQuery);
     $search = new SearchController();
-    $results = $search->where("SELECT * FROM products WHERE name LIKE '%$safeQuery%'");
+    // $results = $search->where("SELECT * FROM products WHERE name LIKE '%$safeQuery%'");
+    $results = $search->where("SELECT 
+            p.*, 
+            pi.path AS first_image
+        FROM 
+            products p
+        LEFT JOIN 
+            product_images pi ON p.id = pi.products_id
+        WHERE 
+            p.name LIKE '%$safeQuery%'
+        GROUP BY 
+            p.id
+        HAVING 
+            MIN(pi.id)
+        ");
 
 
 
-} else {
-    echo "Please enter a search query.";
+
+
 }
 
 

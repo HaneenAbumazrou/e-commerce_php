@@ -4,7 +4,7 @@ ob_start();
 
 ?>
 
-<div class="hero-wrap hero-bread" style="background-image: url('/public/user/assets/images/bg_1.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url('/public/user/assets/images/wishlist.jpg');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -45,10 +45,10 @@ ob_start();
                         <td>1</td>
                         <td>$<?= number_format($item['price'], 2) ?></td>
                         <td>
-													<form action="/user/wishlist/delete?product=<?= $item['id'] ?>" method="POST">
-															<button type="submit" onclick="confirmRemove(<?= $item['id'] ?>)";
-															class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm">Remove</button>
-													</form>
+                        <form action="/user/wishlist/delete?product=<?= $item['id'] ?>" method="POST">
+                                <button type="submit" onclick="confirmRemove(<?= $item['id'] ?>)";
+                                class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm">Remove</button>
+                        </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -63,26 +63,26 @@ class Cart {
 
 
 
-$cart = new Cart();
+// $cart = new Cart();
 
-// Handle adding a product to the cart
-if (isset($_POST['add_to_cart'])) {
-    $product = [
-        'name' => $_POST['product_name'],
-        'price' => $_POST['product_price'],
-        'image' => $_POST['product_image'],
-        'quantity' => $_POST['product_quantity']
-    ];
-    $cart->addProduct($product);
-    // header("Location: /");
-    // exit();
-}
+// // Handle adding a product to the cart
+// if (isset($_POST['add_to_cart'])) {
+//     $product = [
+//         'name' => $_POST['product_name'],
+//         'price' => $_POST['product_price'],
+//         'image' => $_POST['product_image'],
+//         'quantity' => $_POST['product_quantity']
+//     ];
+//     $cart->addProduct($product);
+//     // header("Location: /");
+//     // exit();
+// }
 
-// Handle removing a product from the cart
-if (isset($_GET['remove'])) {
-    $cart->removeProduct($_GET['remove']);
+// // Handle removing a product from the cart
+// if (isset($_GET['remove'])) {
+//     $cart->removeProduct($_GET['remove']);
 
-}
+// }
 
 
 

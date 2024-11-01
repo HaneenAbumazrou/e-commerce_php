@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     "quantity" => $_POST['quantity'],
   ];
 
-  new Cart();
+  $cart = new Cart();
   $cart->addProduct($product);
-  header("Location: ". $_SERVER["HTTP_REFERER"]);
+  header("Location: /product?product_id=". $_GET["product"]);
   exit();
 }
 else {

@@ -1,10 +1,7 @@
 <?php
 
 function is_admin_auth(){
-  if(!isset($_SESSION["admin"])) {
-    header("Location: /admin/login");
-    die;
-  }
+require_once "./function/is_admin_auth.php";
 }
 
 is_admin_auth();

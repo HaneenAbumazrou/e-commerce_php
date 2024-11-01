@@ -4,7 +4,6 @@ use Dotenv\Dotenv;
 require_once "./function/admin_404.php";
 require_once "./function/is_login.php";
 require_once "./function/dd.php";
-require_once "./function/is_user_auth.php";
 require "./vendor/autoload.php";
 
 $dotenv = Dotenv::createImmutable(__DIR__);
@@ -25,7 +24,9 @@ function check()
   // dd($request_parts_q[0]);
 
   if ($request_parts[1] != "admin") {
+    
     if (array_key_exists($request_parts_q[0], $user_routes)) {
+      // dd(  );
       require $user_routes[$request_parts_q[0]];
       
     } else {
@@ -48,12 +49,22 @@ $user_routes = [
   ## index
   "/" => "views/pages/user/index.php",
   "/about-us" => "views/pages/user/about.php",
-  "/user/cart" => "views/pages/user/cart.php",
+  
+  "/user/cart" => "controller/user/Cart/show.php",
+  "/user/cart/create" => "controller/user/Cart/create.php",
+
+
+
   "/products/categories" => "controller/admin/categories/show.php",
   "/user/order/checkout" => "controller/user/Checkout/create.php",
   "/product" => "controller/admin/products/show-user.php",
   "/contact-us" => "views/pages/user/contact.php",
-  "/user/wishlist" => "views/pages/user/wishlist.php",
+
+  "/user/wishlist" => "controller/user/Wishlist/show.php",
+  "/user/wishlist/create" => "controller/user/Wishlist/create.php",
+  "/user/wishlist/delete" => "controller/user/Wishlist/delete.php",
+
+
   "/login" => "controller/user/Auth/login.php",
   "/test" => "controller/user/Checkout/CheckoutController.php",
   "/register" => "controller/user/Auth/register.php",

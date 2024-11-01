@@ -1,4 +1,4 @@
 <?php
 
-require_once "./controller/admin/categories/CategoryController.php";
-$full_categories = (new CategoryController)->index();
+require_once "./model/Category.php";
+$full_categories = (new Category)->where("SELECT * FROM categories");

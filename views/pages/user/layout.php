@@ -1,7 +1,6 @@
 <?php require_once "./function/all_categories.php"; ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden;">
 
   <?php require "./views/partials/user/head.php" ?>
   

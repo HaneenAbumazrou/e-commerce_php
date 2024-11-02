@@ -46,7 +46,18 @@ class CategoryController
     }
 
 
+    public function delete($id)
+    {
+        return $this->category->delete($id);
+    }
+
+    public function update($data, $id)
+    {
+        return $this->category->update($data, $id);
+
+
     public function where($query){
         return $this->category->where($query);
+
     }
 }

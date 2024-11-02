@@ -1,7 +1,6 @@
 <?php
 require_once "./function/is_admin_auth.php";
 require_once "./model/Product.php";
-
 require_once "./model/ProductImage.php";
 
 class ProductController
@@ -51,7 +50,7 @@ class ProductController
     }
 
     // Update an existing product
-    public function update($id, $data)
+    public function update($data, $id)
     {
         return $this->product->update($data, $id);
     }

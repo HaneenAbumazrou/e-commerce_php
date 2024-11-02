@@ -23,12 +23,6 @@ ob_start();
             <div class="card-body py-3">
 
 
-                <?php if (isset($_SESSION["success_message"])) : ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?= $_SESSION["success_message"] ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endif; ?>
                 <!-- General Form Elements -->
                 <form action="/admin/categories/update?id=<?= $categories_data["id"] ?>" method="POST" enctype="multipart/form-data">
                     <div class="mt-3 row mb-3">

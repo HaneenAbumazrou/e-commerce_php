@@ -92,5 +92,6 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
+unset($_SESSION["success_message"]);
 require "./views/pages/admin/layout.php";
 ?>

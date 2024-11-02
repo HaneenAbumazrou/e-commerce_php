@@ -54,7 +54,7 @@ class CategoryController
     public function update($data, $id)
     {
         return $this->category->update($data, $id);
-
+    }
 
     public function where($query){
         return $this->category->where($query);

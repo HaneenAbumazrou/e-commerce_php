@@ -40,7 +40,11 @@ ob_start();
 								<?php //dd($item) ?>
                     <tr>
                         <td><img src="<?= ltrim($item['first_image'], ".") ?>" width="50"></td>
-                        <td><?= htmlspecialchars($item['name']) ?></td>
+                        <td>
+                            <a href="/product?product_id=<?= $item['id'] ?>">
+                                <?= htmlspecialchars($item['name']) ?>
+                            </a>
+                        </td>
                         <td>$<?= number_format($item['price'], 2) ?></td>
                         <td>1</td>
                         <td>$<?= number_format($item['price'], 2) ?></td>

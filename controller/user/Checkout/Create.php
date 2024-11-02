@@ -86,7 +86,6 @@ function clean($data){
   return $data;
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
@@ -101,6 +100,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $_POST["email"] = clean($_POST["email"]);
 
 
+    $total_amount = $_SESSION["total_amount"] ?? $_SESSION["price_before_coupon"];
+
+      $order_id = (new Order())->create([
+      "user_id" => $_SESSION["user"]["user_id"],
+      "coupon_id" => @$_SESSION["coupon"][0]['id'] ?? 0,
+      "status" => 'pinding',
+      "original_price" => $_SESSION["price_before_coupon"],
+      "total_amount" => $total_amount +3,
+    ]);
 
 
 
@@ -114,18 +122,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     ]);
 
 
-    $order_id = (new Order())->create([
-      "user_id" => $_SESSION["user"]["user_id"],
-      "coupon_id" => $_SESSION["coupon"][0]['id'],
-      "status" => 'pinding',
-      "original_price" => $_SESSION["original_price"],
-      "total_amount" => $_SESSION["total_amount"],
-    ]);
+
+
 
 
     $count = 0;
     foreach((new Cart)->getItems() as $item){
-      $price = (new Product)->where("SELECT price from products WHERE id = ".$item['id']);
+      $price = (new Product)->where("SELECT price, stock_quantity from products WHERE id = ".$item['id']);
 
       (new OrderItem)->create([
         'order_id' => $order_id,
@@ -133,6 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         'quantity' => $item['quantity'],
         'price' => $price[0]['price'] * $item['quantity'],
       ]);
+
+      (new Product())->update([
+        'stock_quantity'=> $price[0]['stock_quantity'] -$item['quantity']
+      ], $item['id']);
 
       (new Cart)->removeProduct($count++);
     }
@@ -142,7 +149,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   }
 
 }
-
+else {
+  if(!count((new Cart())->getItems())){
+    header("Location: /user/cart");
+    exit;
+  }
+}
 
 
 

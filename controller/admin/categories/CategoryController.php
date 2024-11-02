@@ -14,7 +14,11 @@ class CategoryController
     // Display a list of all categories
     public function index()
     {
-        return $this->category->where("SELECT * FROM categories");
+        return $this->category->where("SELECT c.*, COUNT(p.id) AS product_count
+        FROM categories c
+        LEFT JOIN products p ON p.category_id = c.id
+        GROUP BY c.id;
+        ");
     }
 
     // Create a new category

@@ -12486,6 +12486,7 @@ h5,
 
 .product {
   display: block;
+  height: 100%;
   width: 100%;
   margin-bottom: 30px;
   position: relative;
@@ -14425,3 +14426,28 @@ textarea.form-control {
   color: #000;
   border-color: #000;
 }
+
+
+.call-to-action {
+  color: #000;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 22px;
+}
+
+.ion-ios-heart-empty.heart-icon {
+  font-size: 40px;
+  cursor: pointer;
+  color: red;
+  padding: 8px;
+}
+
+
+.ion-ios-heart-empty.heart-icon:hover {
+  font-size: 40px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #f00;
+  border-radius: 10px;
+}
+

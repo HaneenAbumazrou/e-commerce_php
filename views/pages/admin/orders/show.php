@@ -110,7 +110,7 @@
                         <td><?= htmlspecialchars($product['qtn']) ?></td>
                         <td>$<?= htmlspecialchars($product['price']) ?></td>
                         <td>
-                            <a href="/admin/products/show" class="btn btn-primary">Show</a>
+                            <a href="/admin/products/show?id=<?= $product['product_id'] ?>" class="btn btn-primary">Show</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

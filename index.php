@@ -47,7 +47,7 @@ function check()
 $user_routes = [
   ######## User #########
   ## index
-  "/" => "views/pages/user/index.php",
+  "/" => "controller/user/Home.php",
   "/about-us" => "views/pages/user/about.php",
   
   "/user/cart" => "controller/user/Cart/show.php",
@@ -61,7 +61,7 @@ $user_routes = [
   "/user/order/checkout/success" => "views/pages/user/success-checkout.php",
   "/product" => "controller/admin/products/show-user.php",
 
-  
+
   "/contact-us" => "controller/user/Contact/create.php",
 
   "/user/wishlist" => "controller/user/Wishlist/show.php",

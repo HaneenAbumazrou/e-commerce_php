@@ -29,4 +29,3 @@ $_SESSION["price_before_coupon"] = $total_price;
 
 
 require "./views/pages/user/cart.php";
-unset($_SESSION["apply_coupon_errors"]);

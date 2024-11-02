@@ -37,7 +37,6 @@ if (isset($_GET['id'])) {
             SELECT CONCAT(city, ', ', address) AS full_address
             FROM addresses
             WHERE user_id = $user_id
-            AND is_default = 1
             LIMIT 1
         ";
         $userAddressResult = $orderModel->where($addressQuery);

@@ -1,6 +1,8 @@
 <?php
 	$title = 'All Admins';
 	$admins = 'active';
+
+  dd($_SESSION);
 	ob_start();
 ?>
 
@@ -25,11 +27,14 @@
           <div class="col col-sm-6 col-lg-10">
             <h5>All Admins</h5>
           </div>
-          <div class="col col-sm-6 col-lg-2 d-flex flex-row-reverse">
-            <div>
-              <a href="/admin/admins/create" class="btn btn-primary">Add New Admin</a>
+
+          <?php if($_SESSION['admin']['role'] != "super admin"): ?>
+            <div class="col col-sm-6 col-lg-2 d-flex flex-row-reverse">
+              <div>
+                <a href="/admin/admins/create" class="btn btn-primary">Add New Admin</a>
+              </div>
             </div>
-          </div>
+          <?php endif ?>
         </div>
 
       <div class="table-responsive">

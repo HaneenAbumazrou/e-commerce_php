@@ -69,7 +69,7 @@ ob_start();
             <th scope="row"><?php echo $Category["id"] ?></th>
             <td><img src="<?php echo ltrim($Category["image_path"], ".") . $Category["image"] ?>" width="130px" height="100px"></td>
             <td><?php echo $Category["name"] ?></td>
-            <td><?php echo $Category["image"] ?></td>
+            <td><?php echo $Category["product_count"] ?></td>
             <form action="/admin/categories/delete?id=<?= $Category["id"] ?>" method="POST">
               <td>
                 <a href="/admin/categories/update?id=<?php echo $Category["id"]; ?>" class="btn btn-success">Update</a>

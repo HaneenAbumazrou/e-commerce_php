@@ -32,18 +32,18 @@
                 <h3><a href="#"><?= $result["name"] ?></a></h3>
                 <div class="d-flex">
                   <div class="pricing">
-                    <p class="price"><span class="mr-2 price-dc"><?= $result["price"] ?></span><span class="price-sale">$80.00</span></p>
+                    <p class="price"><span class="price-sale"><?= $result["price"] ?></span></p>
                   </div>
                 </div>
                 <div class="bottom-area d-flex px-3">
-                  <div class="m-auto d-flex">
-                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                      <span><i class="ion-ios-cart"></i></span>
-                    </a>
-
-                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                      <span><i class="ion-ios-heart"></i></span>
-                    </a>
+                  <div class="m-auto d-flex align-items-baseline">
+                    <form action="/user/wishlist/create?product=<?= $result["id"] ?>" method="POST" id="wish"
+                      style="margin-top: 30px;">
+                      <a onclick="document.getElementById('wish').submit();" type="button"
+                      class="buy-now d-flex justify-content-center align-items-center mx-1">
+                        <span><i class="ion-ios-heart"></i></span>
+                      </a>
+                    </form>
                   </div>
                 </div>
               </div>

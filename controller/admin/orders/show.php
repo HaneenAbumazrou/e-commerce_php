@@ -84,4 +84,12 @@ if (isset($_GET['id'])) {
   }
 
 
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    (new Order)->update($_POST, $_GET["id"]);
+    header("refresh: 0.1");
+}
+
+
+
   require "./views/pages/admin/orders/show.php";

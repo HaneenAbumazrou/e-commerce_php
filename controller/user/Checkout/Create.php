@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $order_id = (new Order())->create([
       "user_id" => $_SESSION["user"]["user_id"],
       "coupon_id" => @$_SESSION["coupon"][0]['id'] ?? 0,
-      "status" => 'pinding',
+      "status" => 'pending',
       "original_price" => $_SESSION["price_before_coupon"],
       "total_amount" => $total_amount +3,
     ]);
@@ -141,7 +141,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         'stock_quantity'=> $price[0]['stock_quantity'] -$item['quantity']
       ], $item['id']);
 
-      (new Cart)->removeProduct($count++);
+      (new Cart)->removeProduct($count);
+      $count++;
     }
 
     header("Location: /user/order/checkout/success");

@@ -1,6 +1,6 @@
 <?php
 	$title = "Show Orders";
-	$users = 'active';
+	$orders = 'active';
 	ob_start();
 ?>
 
@@ -67,20 +67,22 @@
                 <div class="col col-lg-3"><?= $userAddress?></div>
 
               </div>
-
               <div class="row">
                 <div class="col col-lg-1 label">Status</div>
-                <div class="col col-lg-10">
-                <?php if ($status === 'completed'): ?>
-                <span class="badge text-bg-success"><?= $status ?></span>
-            <?php elseif ($status === 'rejected'): ?>
-                <span class="badge text-bg-danger"><?= $status ?></span>
-            <?php elseif ($status === 'pending'): ?>
-                <span class="badge text-bg-warning"><?= $status ?></span>
-            <?php else: ?>
-                <span class="badge text-bg-secondary"><?= $status ?></span>
-            <?php endif; ?>
-                </div>
+
+                <form action="/admin/orders/show?id=<?= $_GET["id"] ?>" method="post" class="row col col-lg-6">
+                  <div class="col col-lg-4">
+                    <select class="form-select" name="status">
+                      <option value="pinding" <?= ($status == "pending")? "selected" : null ?>>Pending</option>
+                      <option value="completed" <?= ($status == "completed")? "selected" : null ?>>Completed</option>
+                      <option value="rejected" <?= ($status == "rejected")? "selected" : null ?>>Rejected</option>
+                    </select>
+                  </div>
+
+                  <div class="col col-lg-2">
+                    <input type="submit" value="Update" class="btn btn-primary">
+                  </div>
+                </form>
               </div>
             </div>
 
@@ -100,7 +102,7 @@
     
                 <tbody>
                 <?php if (!empty($productDetails)): ?>
-                <?php foreach ($productDetails as $index => $product): ?>
+                  <?php foreach ($productDetails as $index => $product): ?>
                     <tr>
                         <th scope="row"><a href="/admin/products/show"><?= $index + 1 ?></a></th>
                         <td><?= htmlspecialchars($product['product_name']) ?></td>
@@ -113,12 +115,12 @@
                             <a href="/admin/products/show?id=<?= $product['product_id'] ?>" class="btn btn-primary">Show</a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="6">No products found for this order.</td>
-                </tr>
-            <?php endif; ?>
+                  <?php endforeach; ?>
+                <?php else: ?>
+                  <tr>
+                      <td colspan="6">No products found for this order.</td>
+                  </tr>
+                <?php endif; ?>
                  
                 </tbody>
               </table>

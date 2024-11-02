@@ -38,10 +38,13 @@ class WishlistController {
 
   function getWishlist() {
 
-      $query = "SELECT p.*
-      FROM products p
-      JOIN wishlists w ON p.id = w.product_id
-      WHERE w.user_id =". $_SESSION['user']['user_id'];
+      $query = "SELECT p.*, w.id AS wishlist_id, pi.path AS first_image
+        FROM products p
+        JOIN wishlists w ON p.id = w.product_id
+        JOIN product_images pi ON pi.products_id = p.id
+        WHERE w.user_id = " . $_SESSION['user']['user_id'] . "
+        GROUP BY p.id
+        ORDER BY pi.created_at ASC";
 
       return $this->wishlist->where($query);
   }

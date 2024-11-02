@@ -27,7 +27,7 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="/products/categories" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
 					<div class="dropdown-menu" aria-labelledby="categories">
-						<a class="dropdown-item" href="/products/categories">All Categories</a>
+						<!-- <a class="dropdown-item" href="/products/categories">All Categories</a> -->
 						<?php foreach($full_categories as $category): ?>
 							<a class="dropdown-item" href="/products/categories?category=<?= $category["name"] ?>"><?= $category["name"] ?></a>
 						<?php endforeach ?>

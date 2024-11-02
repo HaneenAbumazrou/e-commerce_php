@@ -4,11 +4,11 @@
 ?>
 
 
-	<div class="hero-wrap hero-bread" style="background-image: url('/public/user/assets/images/bg_1.jpg');">
+	<div class="hero-wrap hero-bread" style="background-image: url('/public/user/assets/images/checkout.jpg');">
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
+					<p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Checkout</span></p>
 					<h1 class="mb-0 bread">Checkout</h1>
 				</div>
 			</div>
@@ -20,20 +20,26 @@
 		<div class="container">
 			
 			<div class="row justify-content-center">
-				<form action="" method="POST" class="billing-form row justify-content-center">
+				<form action="/user/order/checkout" method="POST" class="billing-form row justify-content-center">
 					<div class="col-xl-7 ftco-animate">
 							<h3 class="mb-4 billing-heading">Billing Details</h3>
 							<div class="row align-items-end">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="firstname">Firt Name</label>
-										<input type="text" class="form-control" name="first_name" placeholder="">
+										<input type="text" class="form-control" name="first_name" value="<?= $_POST['first_name'] ?? null ?>">
+										<span class="text-danger">
+											<?= $_SESSION["checkout_errors"]["first_name_error"] ?? null ?>
+										</span>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="lastname">Last Name</label>
-										<input type="text" class="form-control" name="last_name" placeholder="">
+										<input type="text" class="form-control" name="last_name" value="<?= $_POST['last_name'] ?? null ?>">
+										<span class="text-danger">
+											<?= $_SESSION["checkout_errors"]["last_name_error"] ?? null ?>
+										</span>
 									</div>
 								</div>
 								<div class="w-100"></div>
@@ -42,14 +48,15 @@
 										<label for="country">City</label>
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select id="" class="form-control" name="city">
-												<option value="France">France</option>
-												<option value="Italy">Italy</option>
-												<option value="Philippines">Philippines</option>
-												<option value="South">South Korea</option>
-												<option value="Hongkong">Hongkong</option>
-												<option value="Japan">Japan</option>
+											<select class="form-control" name="city">
+												<option selected >Select</option>
+												<?php foreach($cities as $city): ?>
+													<option value="<?= strtolower($city) ?>"><?= $city ?></option>
+												<?php endforeach ?>
 											</select>
+											<span class="text-danger">
+												<?= $_SESSION["checkout_errors"]["city_error"] ?? null ?>
+											</span>
 										</div>
 									</div>
 								</div>
@@ -57,25 +64,37 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="streetaddress">Street Address</label>
-										<input type="text" class="form-control" name="address" placeholder="House number and street name">
+										<input type="text" class="form-control" name="address" value="<?= $_POST['address'] ?? null ?>">
+										<span class="text-danger">
+											<?= $_SESSION["checkout_errors"]["address_error"] ?? null ?>
+										</span>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" name="appartment" placeholder="Appartment, suite, unit etc: (optional)">
+										<input type="text" class="form-control" name="appartment" value="<?= $_POST['appartment'] ?? null ?>">
+										<span class="text-danger">
+											<?= $_SESSION["checkout_errors"]["appartment_error"] ?? null ?>
+										</span>
 									</div>
 								</div>
 								<div class="w-100"></div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="phone">Phone</label>
-										<input type="text" class="form-control" name="phone" placeholder="">
+										<input type="text" class="form-control" name="phone" value="<?= $_POST['phone'] ?? null ?>">
+										<span class="text-danger">
+											<?= $_SESSION["checkout_errors"]["phone_error"] ?? null ?>
+										</span>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="emailaddress">Email Address</label>
-										<input type="text" class="form-control" name="email" placeholder="">
+										<input type="text" class="form-control" name="email" value="<?= $_POST['email'] ?? null ?>">
+										<span class="text-danger">
+											<?= $_SESSION["checkout_errors"]["email_error"] ?? null ?>
+										</span>
 									</div>
 								</div>
 								<div class="w-100"></div>
@@ -101,20 +120,24 @@
 										<h3 class="billing-heading mb-4">Cart Total</h3>
 										<p class="d-flex">
 											<span>Subtotal</span>
-											<span>$20.60</span>
-										</p>
-										<p class="d-flex">
-											<span>Delivery</span>
-											<span>$0.00</span>
+											<span>JOD <?= $_SESSION["original_price"] ?? null ?></span>
 										</p>
 										<p class="d-flex">
 											<span>Discount</span>
-											<span>$3.00</span>
+											<span><?= $_SESSION["coupon"][0]['discount_percentage'] ?>%</span>
 										</p>
+
+
+										<p class="d-flex">
+											<span>Delivery</span>
+											<span>JOD 3.00</span>
+										</p>
+
+
 										<hr>
 										<p class="d-flex total-price">
 											<span>Total</span>
-											<span>$17.60</span>
+											<span>JOD <?= $_SESSION["total_amount"] ?? null ?></span>
 										</p>
 									</div>
 								</div>

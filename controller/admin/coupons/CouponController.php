@@ -27,6 +27,10 @@ class CouponController {
     $this->coupon->update($data, $pk);
   }
 
+  public function where($query){
+    return $this->coupon->where($query);
+  }
+
 
 
 }

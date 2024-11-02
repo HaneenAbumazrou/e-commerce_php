@@ -5,6 +5,6 @@ $wishlist = new WishlistController();
 $wishlists = $wishlist->getWishlist();
 
 
-
+// dd($wishlists);
 
 require "./views/pages/user/wishlist.php";

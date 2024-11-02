@@ -134,7 +134,7 @@ class Model
   public function delete($pk)
   {
     try {
-      $this->conn->exec("DELETE FROM $this->table WHERE $this->pk=$pk");
+      $this->conn->exec("DELETE FROM $this->table WHERE $this->pk='$pk'");
     } catch (PDOException $error) {
       echo $error->getMessage();
     }

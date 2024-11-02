@@ -52,11 +52,13 @@ $user_routes = [
   
   "/user/cart" => "controller/user/Cart/show.php",
   "/user/cart/create" => "controller/user/Cart/create.php",
+  "/user/cart/delete" => "controller/user/Cart/delete.php",
 
 
 
   "/products/categories" => "controller/admin/categories/show.php",
   "/user/order/checkout" => "controller/user/Checkout/create.php",
+  "/user/order/checkout/success" => "views/pages/user/success-checkout.php",
   "/product" => "controller/admin/products/show-user.php",
 
   
@@ -68,7 +70,7 @@ $user_routes = [
 
 
   "/login" => "controller/user/Auth/login.php",
-  "/test" => "controller/user/Checkout/CheckoutController.php",
+  // "/test" => "controller/user/Checkout/CheckoutController.php",
   "/register" => "controller/user/Auth/register.php",
   "/logout" => "controller/user/Auth/logout.php",
   "/404" => "views/pages/404.php",
@@ -83,8 +85,6 @@ $admin_routes = [
   "/admin/dashboard" => "controller/admin/dashboard.php",
 
   ## Auth
-
-
   "/admin/login" => "controller/admin/login/login.php",
   "/admin/logout" => "controller/admin/login/logout.php",
 
@@ -121,6 +121,7 @@ $admin_routes = [
   // coupons
   "/admin/coupons" => "controller/admin/coupons/index.php",
   "/admin/coupons/create" => "controller/admin/coupons/create.php",
+  "/admin/coupons/apply" => "controller/admin/coupons/apply.php",
   "/admin/coupons/update" => "controller/admin/coupons/update.php",
   "/admin/coupons/delete" => "controller/admin/coupons/delete.php",
   

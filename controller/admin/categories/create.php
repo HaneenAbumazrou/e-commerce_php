@@ -1,6 +1,5 @@
 <?php
 
-
 require "./controller/admin/categories/CategoryController.php";
 
 $all_categories = (new CategoryController())->index();

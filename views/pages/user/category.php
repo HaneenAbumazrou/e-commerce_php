@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="row no-gutters slider-text align-items-center justify-content-center">
 			<div class="col-md-9 ftco-animate text-center">
-				<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+				<p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Products</span></p>
 				<h1 class="mb-0 bread"><?= $_GET["category"] ?? "All Categories" ?></h1>
 			</div>
 		</div>
@@ -18,7 +18,7 @@
 
 <section class="ftco-section">
 	<div class="container">
-		<div class="row justify-content-center">
+		<!-- <div class="row justify-content-center">
 			<div class="col-md-10 mb-5 text-center">
 				<ul class="product-category">
 					<li><a href="#" class="active">All</a></li>
@@ -28,7 +28,7 @@
 					<li><a href="#">Dried</a></li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="row">
 
@@ -37,14 +37,15 @@
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
 						<a href="/product?product_id=<?= $product["id"] ?>" class="img-prod"><img class="img-fluid" src="<?= ltrim($product["first_image"], ".") ?>" alt="Colorlib Template">
-							<span class="status">30%</span>
-							<div class="overlay"></div>
+							<!-- <span class="status">30%</span>
+							<div class="overlay"></div> -->
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
 							<h3><a href="#"><?= $product["name"] ?></a></h3>
 							<div class="d-flex">
 								<div class="pricing">
-									<p class="price"><span class="mr-2 price-dc"><?= $product["price"] ?></span><span class="price-sale">$80.00</span></p>
+									<p class="price"><span class="price-sale">$<?= $product["price"] ?></span></p>
+									<!-- <p class="price"><span class="mr-2 price-dc"><?= $product["price"] ?></span><span class="price-sale">$80.00</span></p> -->
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
@@ -53,9 +54,16 @@
 										<span><i class="ion-ios-cart"></i></span>
 									</a>
 
-									<a href="#" class="heart d-flex justify-content-center align-items-center ">
-										<span><i class="ion-ios-heart"></i></span>
-									</a>
+
+									<form action="/user/wishlist/create?product=<?= $product["id"] ?>" method="POST" id="wishlist">
+										<!-- <button type="submit" class="btn p-0 border-0" style="background: none;">
+											<i class="ion-ios-heart-empty heart-icon" style="font-size: 20px; cursor: pointer; color: red;"></i>
+										</button> -->
+										<a href="#" onclick="document.getElementById('wishlist').submit();"
+										class="heart d-flex justify-content-center align-items-center ">
+											<span><i class="ion-ios-heart"></i></span>
+										</a>
+									</form>
 								</div>
 							</div>
 						</div>

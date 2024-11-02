@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 require "./controller/admin/products/ProductController.php";
 require "./controller/admin/categories/CategoryController.php";

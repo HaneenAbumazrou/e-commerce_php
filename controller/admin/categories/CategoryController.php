@@ -1,4 +1,5 @@
 <?php
+
 require "./model/Category.php";
 
 class CategoryController
@@ -44,6 +45,7 @@ class CategoryController
         return strip_tags(htmlspecialchars(trim($data)));
     }
 
+
     public function delete($id)
     {
         return $this->category->delete($id);
@@ -52,5 +54,10 @@ class CategoryController
     public function update($data, $id)
     {
         return $this->category->update($data, $id);
+
+
+    public function where($query){
+        return $this->category->where($query);
+
     }
 }

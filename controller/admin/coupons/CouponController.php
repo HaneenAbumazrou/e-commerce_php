@@ -1,5 +1,5 @@
 <?php
-
+require_once "./function/is_admin_auth.php";
 require "./model/Coupon.php";
 
 class CouponController {
@@ -25,6 +25,10 @@ class CouponController {
 
   public function update($data, $pk){
     $this->coupon->update($data, $pk);
+  }
+
+  public function where($query){
+    return $this->coupon->where($query);
   }
 
 

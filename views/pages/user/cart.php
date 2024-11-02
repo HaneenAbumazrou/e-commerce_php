@@ -1,14 +1,15 @@
 <?php
 	$title = 'User Cart';
 	ob_start();
+	// include 'controller/user/addcart.php';
 ?>
 
 
-	<div class="hero-wrap hero-bread" style="background-image: url('/public/user/assets/images/bg_1.jpg');">
+	<div class="hero-wrap hero-bread" style="background-image: url('/public/user/assets/images/cart.jpg');">
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+					<p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Cart</span></p>
 					<h1 class="mb-0 bread">My Cart</h1>
 				</div>
 			</div>
@@ -16,132 +17,86 @@
 	</div>
 
 	<section class="ftco-section ftco-cart">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 ftco-animate">
-					<div class="cart-list">
-						<table class="table">
-							<thead class="thead-primary">
-								<tr class="text-center">
-									<th>&nbsp;</th>
-									<th>&nbsp;</th>
-									<th>Product name</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="text-center">
-									<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-									
-									<td class="image-prod"><div class="img"
-									style="background-image:url(/public/user/assets/images/product-3.jpg);"></div></td>
-									
-									<td class="product-name">
-										<h3>Bell Pepper</h3>
-										<p>Far far away, behind the word mountains, far from the countries</p>
-									</td>
-									
-									<td class="price">$4.90</td>
-									
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-										</div>
-									</td>
-									
-									<td class="total">$4.90</td>
-								</tr><!-- END TR-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-								<tr class="text-center">
-									<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-									
-									<td class="image-prod">
-										<div class="img"style="background-image:url(/public/user/assets/images/product-4.jpg);"></div>
-									</td>
-									
-									<td class="product-name">
-										<h3>Bell Pepper</h3>
-										<p>Far far away, behind the word mountains, far from the countries</p>
-									</td>
-									
-									<td class="price">$15.70</td>
-									
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-										</div>
-									</td>
-									
-									<td class="total">$15.70</td>
-								</tr><!-- END TR-->
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-end">
-				<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-					<div class="cart-total mb-3">
-						<h3>Coupon Code</h3>
-						<p>Enter your coupon code if you have one</p>
-						<form action="#" class="info">
-							<div class="form-group">
-								<label for="">Coupon code</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-						</form>
-					</div>
-					<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
-				</div>
-				<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-					<div class="cart-total mb-3">
-						<h3>Estimate shipping and tax</h3>
-						<p>Enter your destination to get a shipping estimate</p>
-						<form action="#" class="info">
-							<div class="form-group">
-								<label for="">Country</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="country">State/Province</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="country">Zip/Postal Code</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-						</form>
-					</div>
-					<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-				</div>
-				<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-					<div class="cart-total mb-3">
-						<h3>Cart Totals</h3>
-						<p class="d-flex">
-							<span>Subtotal</span>
-							<span>$20.60</span>
-						</p>
-						<p class="d-flex">
-							<span>Delivery</span>
-							<span>$0.00</span>
-						</p>
-						<p class="d-flex">
-							<span>Discount</span>
-							<span>$3.00</span>
-						</p>
-						<hr>
-						<p class="d-flex total-price">
-							<span>Total</span>
-							<span>$17.60</span>
-						</p>
-					</div>
-					<p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
-				</div>
-			</div>
-		</div>
-	</section>
+    <div class="container mt-5">
+        <table  class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($cart_products as $index => $item): ?>
+                    <tr>
+                        <td><img src="<?= ltrim($item['product'][0]['first_image'], ".") ?>" width="100"></td>
+                        <td>
+                            <a href="/product?product_id=<?= $item['product'][0]['id'] ?>">
+                                <?= $item['product'][0]['name'] ?>
+                            </a>
+                        </td>
+                        <td>$<?= $item['product'][0]['price'] ?></td>
+                        <td><?= $item['quantity'] ?></td>
+                        <td>$<?= $item['product'][0]['price'] * $item['quantity'] ?></td>
+                        <td>
+                            <button class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm" 
+                                    onclick="confirmRemove(<?= $index ?>)">
+                                <i class="fas fa-trash-alt me-1"></i> Remove
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <script >
+	 // SweetAlert confirmation before removing a product
+        function confirmRemove(index) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to remove this item from your cart?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `/user/cart/delete?cart_product=${index}`;
+                }
+            })
+        }
+    </script>
+
+
+<!-- Inside cart page -->
+<div class="row justify-content-end">
+    <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+        <div class="cart-total mb-3">
+            <h3>Coupon Code</h3>
+            <p>Enter your coupon code if you have one</p>
+            <form action="/admin/coupons/apply" method="POST" class="info">
+                <div class="form-group">
+                    <label for="coupon_code">Coupon code</label>
+                    <input type="text" name="coupon_code" class="form-control text-left px-3" placeholder="Enter code here">
+                    <span class="text-danger">
+                        <?= $_SESSION["apply_coupon_errors"]["coupon_code_error"] ?? null ?>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-primary py-3 px-4 ">Apply Coupon</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</section>
+
 
 	<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
 		<div class="container py-4">

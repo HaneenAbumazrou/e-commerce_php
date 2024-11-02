@@ -1,15 +1,14 @@
 <?php
 	$title = 'E-commerce';
 	ob_start();
-	session_start();
-	//var_dump($_SESSION);
+	
 ?>
 
 
 
 	<section id="home-section" class="hero">
 		<div class="home-slider owl-carousel">
-			<div class="slider-item" style="background-image: url(./public/user/assets/images/bg_1.jpg);">
+			<div class="slider-item" style="background-image: url(https://9to5mac.com/wp-content/uploads/sites/6/2023/09/iphone-15-pro-wallpaper-2.webp?w=1600);">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">

@@ -1,5 +1,5 @@
 <?php
-
+require_once "./function/is_admin_auth.php";
 require_once "./model/Product.php";
 require_once "./model/ProductImage.php";
 
@@ -43,6 +43,10 @@ class ProductController
     public function show($id)
     {
         return $this->product->find($id);
+    }
+
+    public function where($query){
+        return $this->product->where($query);
     }
 
     // Update an existing product

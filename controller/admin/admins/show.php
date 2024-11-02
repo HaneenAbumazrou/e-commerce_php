@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     // var_dump($admin);
     // dd($admin);
   
-  
+    
     if ($admin) {
       $full_name = $admin['first_name'] . ' ' . $admin['last_name'];
       $username = $admin['username'];

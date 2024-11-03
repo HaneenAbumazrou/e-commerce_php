@@ -1,8 +1,6 @@
 <?php
 	$title = 'All Admins';
 	$admins = 'active';
-
-  dd($_SESSION);
 	ob_start();
 ?>
 
@@ -28,7 +26,7 @@
             <h5>All Admins</h5>
           </div>
 
-          <?php if($_SESSION['admin']['role'] != "super admin"): ?>
+          <?php if($_SESSION['admin']['role'] == "super admin"): ?>
             <div class="col col-sm-6 col-lg-2 d-flex flex-row-reverse">
               <div>
                 <a href="/admin/admins/create" class="btn btn-primary">Add New Admin</a>

@@ -98,7 +98,7 @@
                                 <?= $_SESSION["apply_coupon_errors"]["coupon_code_error"] ?? null ?>
                             </span>
                         </div>
-                        <button type="submit" class="btn btn-primary py-3 px-4">Apply Coupon</button>
+                        <input type="submit" value="Apply Coupon" class="btn btn-primary py-3 px-4">
                     </form>
                 </div>
             </div>

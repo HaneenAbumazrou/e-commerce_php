@@ -100,7 +100,7 @@
 								<div class="w-100"></div>
 
 								<div class="col-md-6">
-									<input type="submit" value="Submit">
+									<input type="submit" value="Submit" class="btn btn-primary py-3 px-4">
 								</div>
 								<!-- <div class="col-md-12">
 									<div class="form-group mt-4">
@@ -129,11 +129,22 @@
 										<span><?= @$_SESSION["coupon"][0]['discount_percentage'] ?? 0 ?>%</span>
 									</p>
 
+									<p class="d-flex">
+										<span>Price with discount</span>
+										<span>JOD <?php
+											if(isset($_SESSION["total_amount"]))
+												echo $_SESSION["total_amount"];
+											else 
+												echo $_SESSION["price_before_coupon"]
+											?></span>
+									</p>
+
 
 									<p class="d-flex">
 										<span>Delivery</span>
 										<span>JOD 3.00</span>
 									</p>
+
 
 
 									<hr>

@@ -1,7 +1,14 @@
 <?php
 require "./controller/user/Cart/CartController.php";
 require "./model/Product.php";
+// foreach ($_COOKIE as $name => $value) {
+//   // Set the cookie's expiration date to a past time
+//   setcookie($name, '', time() - 3600, '/');
+// }
 
+// // Optional: Clear the $_COOKIE array for immediate effect
+// $_COOKIE = array();
+// die;
 $cart = new Cart();
 $pro = new Product();
 

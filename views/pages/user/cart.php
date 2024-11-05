@@ -23,63 +23,63 @@
 <section class="container mt-5">
   <div class="row">
     <!-- Cart Table Column -->
-    <div class="col-lg-8">
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th>&nbsp;</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($cart_products as $index => $item): ?>
-          <tr>
-            <td><img src="<?= ltrim($item['product'][0]['first_image'], ".") ?>" width="100"></td>
-            <td>
-              <a href="/product?product_id=<?= $item['product'][0]['id'] ?>">
-                <?= $item['product'][0]['name'] ?>
-              </a>
-            </td>
-            <td>$<?= $item['product'][0]['price'] ?></td>
-            <td><?= $item['quantity'] ?></td>
-            <td>$<?= $item['product'][0]['price'] * $item['quantity'] ?></td>
-            <td>
-              <button class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm" 
-                      onclick="confirmRemove(<?= $index ?>)">
-                <i class="fas fa-trash-alt me-1"></i> Remove
-              </button>
-            </td>
-          </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
-
-      <div>
+    <div class="col-lg-9">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th>&nbsp;</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($cart_products as $index => $item): ?>
+            <tr>
+              <td><img src="<?= ltrim($item['product'][0]['first_image'], ".") ?>" width="100"></td>
+              <td>
+                <a href="/product?product_id=<?= $item['product'][0]['id'] ?>">
+                  <?= $item['product'][0]['name'] ?>
+                </a>
+              </td>
+              <td>$<?= $item['product'][0]['price'] ?></td>
+              <td><?= $item['quantity'] ?></td>
+              <td>$<?= $item['product'][0]['price'] * $item['quantity'] ?></td>
+              <td>
+                <button class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm" 
+                        onclick="confirmRemove(<?= $index ?>)">
+                  <i class="fas fa-trash-alt me-1"></i> Remove
+                </button>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="mt-3">
         <a href="/user/order/checkout" class="btn btn-primary py-3 px-4">Checkout</a>
       </div>
     </div>
 
     <!-- Coupon Form Column -->
-    <div class="col-lg-4 mt-3">
-      <div class="cart-wrap ftco-animate">
-        <div class="cart-total mb-3">
-          <h3>Coupon Code</h3>
-          <p>Enter your coupon code if you have one</p>
-          <form action="/admin/coupons/apply" method="POST" class="info">
-            <div class="form-group">
-              <label for="coupon_code">Coupon code</label>
-              <input type="text" name="coupon_code" class="form-control text-left px-3" placeholder="Enter code here">
-              <span class="text-danger">
-                <?= $_SESSION["apply_coupon_errors"]["coupon_code_error"] ?? null ?>
-              </span>
-            </div>
-            <input type="submit" value="Apply Coupon" class="btn btn-primary py-3 px-4">
-          </form>
-        </div>
+    <div class="col-lg-3 mt-3 mt-lg-0">
+      <div class="p-4 border rounded bg-light">
+        <h3>Coupon Code</h3>
+        <p>Enter your coupon code if you have one</p>
+        <form action="/admin/coupons/apply" method="POST">
+          <div class="form-group mb-3">
+            <label for="coupon_code">Coupon code</label>
+            <input type="text" name="coupon_code" class="form-control" placeholder="Enter code here">
+            <span class="text-danger">
+              <?= $_SESSION["apply_coupon_errors"]["coupon_code_error"] ?? null ?>
+            </span>
+          </div>
+          <input type="submit" value="Apply Coupon" class="btn btn-primary w-100 py-3">
+        </form>
       </div>
     </div>
   </div>

@@ -43,6 +43,39 @@
 		</div>
 	</section> 
 
+	<section class="ftco-section ftco-category">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <span class="subheading">Categories</span>
+                <h2 class="mb-4">Discover our Categories</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <?php foreach ($home_categories as $index => $category): ?>
+                <?php if ($index % 3 === 0 && $index !== 0): ?>
+                    </div><div class="row justify-content-center">
+                <?php endif; ?>
+
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="category-wrap ftco-animate img d-flex align-items-end"
+                         style="background-image: url(<?= ltrim($category['image_path'], '.') . $category['image'] ?>);">
+                        <div class="text px-3 py-1">
+                            <h2><a href="/products/categories?category=<?= urlencode($category['name']) ?>"><?= htmlspecialchars($category['name']) ?></a></h2>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+
+
+
+
 
 	<section class="ftco-section" id="home-product">
 		<div class="container">

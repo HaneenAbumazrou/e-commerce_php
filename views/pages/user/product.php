@@ -23,7 +23,7 @@ ob_start();
         </div>
       </div>
 
-      <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+      <div class="col-lg-6 product-details pl-md-5 ftco-animate justify-content-center">
         <h3><?= $product[0]["name"] ?></h3>
         <!-- <div class="rating d-flex">
           <p class="text-left mr-4">
@@ -46,29 +46,59 @@ ob_start();
 
 
 
-        <div class="d-flex">
-          <form action="/user/cart/create?product=<?= $product[0]["id"] ?>" method="post" id="cart">
+        <div style="margin-left: -375px;">
+    <div class="d-flex flex-column align-items-center">
+        <!-- Quantity Input -->
+        <form action="/user/cart/create?product=<?= $product[0]["id"] ?>" method="post" id="cart">
+            <div class="d-flex mb-3" style="max-width: 120px;">
+                <!-- Minus button -->
+                <button type="button" onclick="decrementQuantity()">-</button>
 
-            <div class="row mt-4">
-              <div class="w-100"></div>
+                <!-- Quantity input -->
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" style="width: 60px; text-align: center;" />
 
-              <div class="input-group col-md-6 d-flex mb-3">
-
-                <input type="number" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-
-              </div>
-
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <p style="margin: 0;">
-                  <a href="#" class="btn btn-black py-3 px-5" onclick="document.getElementById('cart').submit();">Add to Cart</a>
-                </p>
-
-             <form action="/user/wishlist/create?product=<?= $product[0]['id'] ?>" method="POST" style="margin: 0;">
-               <button type="submit" class="btn p-0">
-               <i class="ion-ios-heart-empty heart-icon"></i>
-               </button>
-             </form>
+                <!-- Plus button -->
+                <button type="button" onclick="incrementQuantity()">+</button>
             </div>
+        </form>
+    </div>
+</div>
+
+
+        
+        <!-- Button Group -->
+        <div class="d-flex">
+            <p class="mb-0 mr-3">
+                <a href="#" class="btn btn-black py-3 px-5" onclick="document.getElementById('cart').submit();">Add to Cart</a>
+            </p>
+            
+            <form action="/user/wishlist/create?product=<?= $product[0]["id"] ?>" method="POST" id="wish">
+                <p class="mb-0">
+                <a href="#" class="btn custom-wishlist-btn text-black py-3 px-4" onclick="document.getElementById('wish').submit();">
+    Add to Wishlist <i class="ion-ios-heart-empty heart-icon" style="font-size: 1.0em; color: red;"></i>
+</a>
+
+<style>
+/* Custom styles for the wishlist button */
+.custom-wishlist-btn {
+    background-color: white !important; /* Force white background */
+    color: black !important; /* Force black text color */
+    border: 1px solid #ccc; /* Optional: Add a border */
+}
+
+.custom-wishlist-btn:hover,
+.custom-wishlist-btn:focus {
+    background-color: #f0f0f0 !important; /* Keep white background on hover */
+    color: black !important; /* Keep black text on hover */
+    text-decoration: none; /* Remove underline */
+    border-color: #ccc; /* Keep border color consistent */
+}
+</style>
+                </p>
+            </form>
+        </div>
+    </form>
+</div>
 
 
 
@@ -130,6 +160,23 @@ ob_start();
 </section>
 
 
+<script>
+    function incrementQuantity() {
+        var quantityInput = document.getElementById("quantity");
+        var currentValue = parseInt(quantityInput.value);
+        if (currentValue < quantityInput.max) {
+            quantityInput.value = currentValue + 1;
+        }
+    }
+
+    function decrementQuantity() {
+        var quantityInput = document.getElementById("quantity");
+        var currentValue = parseInt(quantityInput.value);
+        if (currentValue > quantityInput.min) {
+            quantityInput.value = currentValue - 1;
+        }
+    }
+</script>
 
 
 

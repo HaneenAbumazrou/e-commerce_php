@@ -1298,3 +1298,33 @@ h6 {
 .form-select {
   border-color: #a1a1a1;
 }
+
+/* Align items and adjust spacing */
+.d-flex.align-items-center.gap-3 {
+  gap: 15px; /* Adds space between buttons */
+}
+
+/* Style Add to Cart button */
+.btn-primary {
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+/* Style for Heart Icon */
+.heart-icon {
+  font-size: 1.5rem;
+  color: red;
+  cursor: pointer;
+}
+
+.input-number {
+  max-width: 60px;
+  text-align: center;
+}

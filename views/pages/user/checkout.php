@@ -115,6 +115,58 @@ ob_start();
 				</div>
 
 
+
+					<div class="col-xl-5">
+						<div class="row mt-5 pt-3">
+							<div class="col-md-12 d-flex mb-5">
+								<div class="cart-detail cart-total p-3 p-md-4">
+									<h3 class="billing-heading mb-4">Cart Total</h3>
+									<p class="d-flex">
+										<span>Subtotal</span>
+										<span>JOD <?= $_SESSION["price_before_coupon"] ?? null ?></span>
+									</p>
+									<p class="d-flex">
+										<span>Discount</span>
+										<span><?= @$_SESSION["coupon"][0]['discount_percentage'] ?? 0 ?>%</span>
+									</p>
+
+									<p class="d-flex">
+                                       <span></span>
+                                       <span><?php
+                                            if (isset($_SESSION["total_amount"]) && $_SESSION["total_amount"] !== 0)
+                                                echo ($_SESSION["total_amount"] - $_SESSION["price_before_coupon"]) . " JD";
+                                            else
+                                                echo "0 JD"
+                                            ?></span>
+                                    </p>
+
+									<p class="d-flex">
+										<span>Price after discount</span>
+										<span>JOD <?php
+											if(isset($_SESSION["total_amount"]))
+												echo $_SESSION["total_amount"];
+											else 
+												echo $_SESSION["price_before_coupon"]
+											?></span>
+									</p>
+
+
+									<p class="d-flex">
+										<span>Delivery</span>
+										<span>JOD 3.00</span>
+									</p>
+
+
+
+									<hr>
+									<p class="d-flex total-price">
+										<span>Total</span>
+										<span>JOD <?php
+											if(isset($_SESSION["total_amount"]))
+												echo $_SESSION["total_amount"]+3;
+											else 
+												echo $_SESSION["price_before_coupon"]+3
+
 				<div class="col-xl-5">
 					<div class="row mt-5 pt-3">
 						<div class="col-md-12 d-flex mb-5">
@@ -135,6 +187,7 @@ ob_start();
 												echo ($_SESSION["total_amount"] - $_SESSION["price_before_coupon"]) . " JD";
 											else
 												echo "0 JD"
+>
 											?></span>
 								</p>
 

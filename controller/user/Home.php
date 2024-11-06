@@ -1,6 +1,7 @@
 <?php
 
 require "./model/Product.php";
+require "./model/Category.php";
 
 $query = "SELECT p.*, pi.path
 FROM products p
@@ -14,10 +15,17 @@ LEFT JOIN product_images pi
         LIMIT 1
     )
 ORDER BY RAND()
-LIMIT 16;
+LIMIT 8;
 ";
 
 $home_products = (new Product())->where($query);
 
+$query1 = "SELECT id, name, image, image_path 
+FROM categories
+ORDER BY RAND()
+LIMIT 16;
+";
+
+$home_categories = (new Category())->where($query1);
 
 require "./views/pages/user/index.php";

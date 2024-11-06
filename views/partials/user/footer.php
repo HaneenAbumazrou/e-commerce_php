@@ -8,11 +8,11 @@
         </a>
       </div>
     </div>
-    <!-- <div class="row mb-5">
+    <div class="row mb-5">
       <div class="col-md">
         <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">Vegefoods</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+          <h2 class="ftco-heading-2">MobixStore</h2>
+          <p>Connecting you to the world, one phone at a time. Experience the best in mobile technology with MobixStore.</p>
           <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -24,10 +24,9 @@
         <div class="ftco-footer-widget mb-4 ml-md-5">
           <h2 class="ftco-heading-2">Menu</h2>
           <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">Shop</a></li>
-            <li><a href="#" class="py-2 d-block">About</a></li>
-            <li><a href="#" class="py-2 d-block">Journal</a></li>
-            <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+            <li><a href="#category-section" class="py-2 d-block">Categories</a></li>
+            <li><a href="/about-us" class="py-2 d-block">About</a></li>
+            <li><a href="/contact-us" class="py-2 d-block">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -43,7 +42,7 @@
             </ul>
             <ul class="list-unstyled">
               <li><a href="#" class="py-2 d-block">FAQs</a></li>
-              <li><a href="#" class="py-2 d-block">Contact</a></li>
+              <li><a href="/contact-us" class="py-2 d-block">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -53,16 +52,16 @@
           <h2 class="ftco-heading-2">Have a Questions?</h2>
           <div class="block-23 mb-3">
             <ul>
-              <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-              <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-              <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+              <li><a href="https://www.google.com/maps/dir//Ar-Razi+St.+141,+Amman/@31.9701476,35.8274056,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!2m2!1d35.9098069!2d31.9701742?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"><span class="icon icon-map-marker"></span><span class="text">Orange Digital Village</span></li>
+              <li><a href="#"><span class="icon icon-phone"></span><span class="text">+962 771234567</span></a></li>
+              <li><a href="#"><span class="icon icon-envelope"></span><span class="text">MobixStore@gmail.com</span></a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 text-center"> -->
+      <div class="col-md-12 text-center">
 
         <p class="d-flex justify-content-center m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | MobixStore

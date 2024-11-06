@@ -5,7 +5,7 @@
 
 
 
-  <div class="hero-wrap hero-bread" style="background-image: url('public/user/assets/images/4bc5a864bc7cb0cffbee7b40e28f7c02.jpg');">
+  <div class="hero-wrap hero-bread" style="background-image: url('public/user/assets/images/about-hero.webp');">
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
         <div class="col-md-9 ftco-animate text-center">
@@ -56,10 +56,10 @@
             <h5 class="card-title" style="font-size: 1.5rem;">Belal</h5>
             <p class="card-text">Scrum Master</p>
             <div class="social-icons mt-3">
-              <a href="https://www.linkedin.com/in/belal" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://www.linkedin.com/in/belal-shakra/" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/belal" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://github.com/belal-shakra" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-github"></i>
               </a>
             </div>
@@ -88,10 +88,10 @@
             <h5 class="card-title" style="font-size: 1.5rem;">Abdulaziz</h5>
             <p class="card-text">Developer</p>
             <div class="social-icons mt-3">
-              <a href="https://www.linkedin.com/in/abdulaziz" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://www.linkedin.com/in/abdalaziz-atyeh-5781a6283/" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/abdulaziz" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://github.com/abd-al-aziz" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-github"></i>
               </a>
             </div>
@@ -107,10 +107,10 @@
             <h5 class="card-title" style="font-size: 1.5rem;">Abdullah</h5>
             <p class="card-text">Developer</p>
             <div class="social-icons mt-3">
-              <a href="https://www.linkedin.com/in/abdullah" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://www.linkedin.com/in/abdallah-almomany/" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/abdullah" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://github.com/Abdallah-Almomani99" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-github"></i>
               </a>
             </div>
@@ -123,10 +123,10 @@
             <h5 class="card-title" style="font-size: 1.5rem;">Mahmoud</h5>
             <p class="card-text">Developer</p>
             <div class="social-icons mt-3">
-              <a href="https://www.linkedin.com/in/mahmoud" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://www.linkedin.com/in/mahmoud-abdelhafez-7950132b3/" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-linkedin"></i>
               </a>
-              <a href="https://github.com/mahmoud" target="_blank" class="mx-3" style="font-size: 1.8rem;">
+              <a href="https://github.com/mahmoudsabdelhafez" target="_blank" class="mx-3" style="font-size: 1.8rem;">
                 <i class="fab fa-github"></i>
               </a>
             </div>

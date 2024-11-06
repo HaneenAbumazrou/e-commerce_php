@@ -63,11 +63,37 @@ ob_start();
     </p>
 
     <div class="row pt-3">
-      <div class="col-lg-4">
-        <form action="/admin/products/delete?id=<?= $product["id"] ?>" method="POST">
-          <a href="/admin/products/update?id=<?= $product["id"] ?>" class="btn btn-success">Update</a>
-          <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-        </form>
+      <div class="col-lg-4 d-flex">
+
+        <a href="/admin/products/update?id=<?= $product["id"] ?>" class="btn btn-success">Update</a>
+
+        <!-- Button trigger modal -->
+        <div class="mx-2">
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm delete</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Are you sure you Want to delete this Product : <b><?= $product["name"] ?></b>
+                </div>
+                <div class="modal-footer">
+                  <form action="/admin/products/delete?id=<?= $product["id"] ?>" method="POST">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

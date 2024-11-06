@@ -88,7 +88,6 @@ function confirmRemove(wishlistId) {
 
 
 
-
 <?php
 $content = ob_get_clean();
 include './views/pages/user/layout.php'; 

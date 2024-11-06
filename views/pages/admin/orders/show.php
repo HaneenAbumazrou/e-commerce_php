@@ -73,9 +73,10 @@
                 <form action="/admin/orders/show?id=<?= $_GET["id"] ?>" method="post" class="row col col-lg-6">
                   <div class="col col-lg-4">
                     <select class="form-select" name="status">
-                      <option value="pinding" <?= ($status == "pending")? "selected" : null ?>>Pending</option>
+                      <option value="pending" <?= ($status == "pending")? "selected" : null ?>>Pending</option>
+                      <option value="in-preparation" <?= ($status == "in-preparation")? "selected" : null ?>>In Preparation</option>
+                      <option value="in-delivery" <?= ($status == "in-delivery")? "selected" : null ?>>In Delivery</option>
                       <option value="completed" <?= ($status == "completed")? "selected" : null ?>>Completed</option>
-                      <option value="rejected" <?= ($status == "rejected")? "selected" : null ?>>Rejected</option>
                     </select>
                   </div>
 

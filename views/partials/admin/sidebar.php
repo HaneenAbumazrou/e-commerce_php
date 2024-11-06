@@ -45,12 +45,12 @@
       </a>
     </li>
 
-    <!-- <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link <?= (isset($users)) ? $users : "" ?>" href="/admin/users">
         <i class="bi bi-people"></i>
         <span>Users</span>
       </a>
-    </li> -->
+    </li>
 
     <li class="nav-item">
       <a class="nav-link <?= (isset($messages)) ? $messages : "" ?>" href="/admin/messages">

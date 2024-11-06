@@ -1,5 +1,5 @@
 <?php
-
+require_once "./function/is_admin_auth.php";
 require "./controller/user/Contact/ContactController.php";
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){

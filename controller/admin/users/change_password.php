@@ -27,6 +27,10 @@ function validation($data){
     $result = false;
     $_SESSION["update_password_errors"]["current_password_error"] = "The password doesn't match with your current password.";
   }
+  elseif (!preg_match('/^(?=.*[A-Z]).{8,}$/', $data["password"])){
+    $result = false;
+    $_SESSION["update_password_errors"]["password_error"] = "The password field must consists from 8 chars and at least one upper case";
+  }
   else if ($data["password"] != $data["password_confirmation"]){
     $result = false;
     $_SESSION["update_password_errors"]["password_error"] = "The passwords aren't same.";

@@ -31,10 +31,8 @@ ob_start();
           <div class="tab-content pt-2">
 
             <div class="tab-pane fade show active profile-overview" id="order-details">
-
-
               <div class="row justify-content-start flex-row-reverse">
-                <div class="col col-sm-12 col-lg-4 mx mb-5">
+                <div class="col-sm-12 col-lg-4 mx mb-5">
                   <table class="mb-2">
                     <th class="pe-3">Status</th>
                     <td><span class="badge text-bg-success"><?= $order['order_status'] ?></span></td>
@@ -82,7 +80,7 @@ ob_start();
                   </div>
                 </div>
 
-                <div class="col col-sm-12 col-lg-8 my-5">
+                <div class="col-sm-12 col-lg-8 my-5">
                   <h2 class="text-center mb-4">Order Status</h2>
                   <div class="progress-track my-5">
                     <ul id="progressbar">
@@ -95,7 +93,7 @@ ob_start();
                       <?php endforeach ?> -->
                       <li class="step0 <?= array_search($order['order_status'], $statuses) >= 0 ? "active fw-bold" : "" ?>" id="step1">Pending</li>
                       <li class="step0 <?= array_search($order['order_status'], $statuses) >= 1  ? "active fw-bold" : "" ?> text-center" id="step2">In Preparation</li>
-                      <li class="step0 <?= array_search($order['order_status'], $statuses) >= 2  ? "active fw-bold" : "" ?> text-right" id="step3"><span id="three">Out for Delivery</span></li>
+                      <li class="step0 <?= array_search($order['order_status'], $statuses) >= 2  ? "active fw-bold" : "" ?> text-right" id="step3"><span id="thre">Out for Delivery</span></li>
                       <li class="step0  <?= array_search($order['order_status'], $statuses) >= 3  ? "active fw-bold" : "" ?> text-right" id="step4">Delivered</li>
                     </ul>
                   </div>
@@ -145,7 +143,6 @@ ob_start();
       </div>
     </div>
   </div>
-
 
 
 

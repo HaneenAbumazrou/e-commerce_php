@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "./function/is_admin_auth.php";
 
 require "./controller/admin/orders/OrderController.php";
@@ -11,10 +11,10 @@ if (isset($_GET['id'])) {
 
 
     // Query to get product names for a specific order_id
-    
 
 
-    if($order) {    
+
+    if ($order) {
         $order_id = $order['id'];
         $user_id = $order['user_id'];
         $status = $order['status'];
@@ -49,10 +49,10 @@ if (isset($_GET['id'])) {
         // Get product details for the order
         $productDetailsQuery = "
             SELECT products.id AS product_id,
-                   products.name AS product_name, 
-                   products.description, 
-                   order_items.quantity AS qtn, 
-                   products.price
+            products.name AS product_name, 
+            products.description, 
+            order_items.quantity AS qtn, 
+            products.price
             FROM products
             JOIN order_items ON products.id = order_items.product_id
             WHERE order_items.order_id = $order_id
@@ -63,34 +63,31 @@ if (isset($_GET['id'])) {
 
 
 
-       if (isset($order['coupon_id']) && !empty($order['coupon_id'])) { 
-    $couponQuery = "SELECT code FROM coupons WHERE id = " . intval($order['coupon_id']);
-    $couponResult = $orderModel->where($couponQuery);
-    
-    // Ensure $couponResult is not empty and get the coupon code
-    $coupon_code = !empty($couponResult) ? $couponResult[0]['code'] : 'No coupon applied';
-} else {
-    $coupon_code = 'No coupon applied';
-}
+        if (isset($order['coupon_id']) && !empty($order['coupon_id'])) {
+            $couponQuery = "SELECT code FROM coupons WHERE id = " . intval($order['coupon_id']);
+            $couponResult = $orderModel->where($couponQuery);
 
-    
-    }
-    else {
+            // Ensure $couponResult is not empty and get the coupon code
+            $coupon_code = !empty($couponResult) ? $couponResult[0]['code'] : 'No coupon applied';
+        } else {
+            $coupon_code = 'No coupon applied';
+        }
+    } else {
         echo "Order not found.";
         exit;
-      }
+    }
 } else {
-    echo "No Order ID provided.";
+    require "./views/pages/404.php";
     exit;
-  }
+}
 
 
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     (new Order)->update($_POST, $_GET["id"]);
     header("refresh: 0.1");
 }
 
 
 
-  require "./views/pages/admin/orders/show.php";
+require "./views/pages/admin/orders/show.php";

@@ -19,6 +19,7 @@ ob_start();
 <section class="ftco-section ftco-cart">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<<<<<<< HEAD
   <?php if (count($cart_products)): ?>
     <section class="container mt-5">
       <div class="row">
@@ -37,6 +38,26 @@ ob_start();
             </thead>
             <tbody>
               <?php foreach ($cart_products as $index => $item): ?>
+=======
+    <?php if (count($cart_products)): ?>
+      <section class="container mt-5">
+        <div class="row">
+          <!-- Cart Table Column -->
+          <div class="col-lg-8">
+            <table class="table">
+              <thead class="table-dark">
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($cart_products as $index => $item): ?>
+>>>>>>> 39f125826c284fbf241171383d2e45bc77de19df
                 <tr>
                   <td><img src="<?= ltrim($item['product'][0]['first_image'], ".") ?>" width="100"></td>
                   <td>
@@ -48,12 +69,18 @@ ob_start();
                   <td><?= $item['quantity'] ?></td>
                   <td>$<?= $item['product'][0]['price'] * $item['quantity'] ?></td>
                   <td>
+<<<<<<< HEAD
                     <button class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm"
                       onclick="confirmRemove(<?= $index ?>)">
+=======
+                    <button class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm" 
+                            onclick="confirmRemove(<?= $index ?>)">
+>>>>>>> 39f125826c284fbf241171383d2e45bc77de19df
                       <i class="fas fa-trash-alt me-1"></i> Remove
                     </button>
                   </td>
                 </tr>
+<<<<<<< HEAD
               <?php endforeach; ?>
             </tbody>
           </table>
@@ -100,6 +127,103 @@ ob_start();
               }
             </script>
 
+=======
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+
+            <div>
+              <a href="/user/order/checkout" class="btn btn-primary py-3 px-4">Checkout</a>
+            </div>
+          </div>
+
+          <!-- Coupon Form Column -->
+          <div class="col-lg-4 mt-3">
+            <div class="cart-wrap ftco-animate">
+              <div class="cart-total mb-3">
+                <h3>Coupon Code</h3>
+                <p>Enter your coupon code if you have one</p>
+                <form action="/admin/coupons/apply" method="POST" class="info">
+                  <div class="form-group">
+                    <label for="coupon_code">Coupon code</label>
+                    <input type="text" name="coupon_code" class="form-control text-left px-3" placeholder="Enter code here">
+                    <span class="text-danger">
+                      <?= $_SESSION["apply_coupon_errors"]["coupon_code_error"] ?? null ?>
+                    </span>
+                  </div>
+                  <input type="submit" value="Apply Coupon" class="btn btn-primary py-3 px-4">
+                </form>
+              </div>
+
+              <script>
+              // SweetAlert confirmation before removing a product
+                  function confirmRemove(index) {
+                      Swal.fire({
+                          title: 'Are you sure?',
+                          text: "Do you want to remove this item from your cart?",
+                          icon: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Yes, remove it!'
+                      }).then((result) => {
+                          if (result.isConfirmed) {
+                              window.location.href = `/user/cart/delete?cart_product=${index}`;
+                          }
+                      })
+                  }
+              </script>
+
+
+              <!-- Inside cart page -->
+              <div class="row justify-content-end">
+                  <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                      <div class="cart-total mb-3">
+                          <h3>Coupon Code</h3>
+                          <p>Enter your coupon code if you have one</p>
+                          <form action="/admin/coupons/apply" method="POST" class="info">
+                              <div class="form-group">
+                                  <label for="coupon_code">Coupon code</label>
+                                  <input type="text" name="coupon_code" class="form-control text-left px-3" placeholder="Enter code here">
+                                  <span class="text-danger">
+                                      <?= $_SESSION["apply_coupon_errors"]["coupon_code_error"] ?? null ?>
+                                  </span>
+                              </div>
+                              <input type="submit" class="btn btn-primary py-3 px-4" value="Apply Coupon">
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          <?php else:?>
+              <div class="d-flex justify-content-center my-4">
+                  <h4>Your cart is empty.</h4>
+              </div>
+          <?php endif ?>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        // SweetAlert confirmation before removing a product
+        function confirmRemove(index) {
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to remove this item from your cart?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, remove it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = `/user/cart/delete?cart_product=${index}`;
+            }
+          })
+        }
+      </script>
+>>>>>>> 39f125826c284fbf241171383d2e45bc77de19df
 
 
           <?php else: ?>

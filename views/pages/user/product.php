@@ -58,21 +58,17 @@ ob_start();
 
               </div>
 
-              <div class="w-100"></div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <p style="margin: 0;">
+                  <a href="#" class="btn btn-black py-3 px-5" onclick="document.getElementById('cart').submit();">Add to Cart</a>
+                </p>
+
+             <form action="/user/wishlist/create?product=<?= $product[0]['id'] ?>" method="POST" style="margin: 0;">
+               <button type="submit" class="btn p-0">
+               <i class="ion-ios-heart-empty heart-icon"></i>
+               </button>
+             </form>
             </div>
-
-            <p><a href="#" class="btn btn-black py-3 px-5"
-                onclick="document.getElementById('cart').submit();">Add to Cart</a></p>
-          </form>
-
-
-          <form action="/user/wishlist/create?product=<?= $product[0]["id"] ?>" method="POST"
-            style="margin-top: 30px;">
-            <button type="submit" class="btn p-0 border-0" style="background: none;">
-              <i class="ion-ios-heart-empty heart-icon"></i>
-            </button>
-          </form>
-        </div>
 
 
 

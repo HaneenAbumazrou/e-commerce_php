@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+require_once "./function/is_admin_auth.php";
 require "./controller/admin/orders/OrderController.php";
 
 

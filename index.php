@@ -67,10 +67,17 @@ $user_routes = [
   "/user/wishlist" => "controller/user/Wishlist/show.php",
   "/user/wishlist/create" => "controller/user/Wishlist/create.php",
   "/user/wishlist/delete" => "controller/user/Wishlist/delete.php",
+  
+  
+  "/user/profile" => "controller/admin/users/user-profile.php",
+  "/user/profile/order" => "controller/admin/users/show_order.php",
+  "/user/profile/edit" => "controller/admin/users/edit_profile.php",
+  "/user/profile/edit/password" => "controller/admin/users/change_password.php",
+
+
 
 
   "/login" => "controller/user/Auth/login.php",
-  // "/test" => "controller/user/Checkout/CheckoutController.php",
   "/register" => "controller/user/Auth/register.php",
   "/logout" => "controller/user/Auth/logout.php",
   "/404" => "views/pages/404.php",
@@ -93,16 +100,16 @@ $admin_routes = [
   "/admin/admins/create" => "controller/admin/admins/create.php",
   "/admin/admins/show" => "controller/admin/admins/show.php",
   "/admin/admins/delete" => "controller/admin/admins/delete.php",
-  "/admin/admins/profile" => "controller/admin/admins/admin-profile.php",
-
+  "/admin/admins/profile" => "controller/admin/admins/admin-profile/admin-profile.php",
+  
   //orders
   "/admin/orders" => "controller/admin/orders/order.php",
   "/admin/orders/show" => "controller/admin/orders/show.php",
 
   // users
-  // "/admin/users" => "views/pages/admin/users/index.php",
-  // "/admin/users/order" => "views/pages/admin/users/order.php",
-  // "/admin/users/show" => "views/pages/admin/users/show.php",
+  "/admin/users" => "views/pages/admin/users/index.php",
+  "/admin/users/order" => "views/pages/admin/users/order.php",
+  "/admin/users/show" => "views/pages/admin/users/show.php",
 
   // categories
   "/admin/categories" => "controller/admin/categories/create.php",

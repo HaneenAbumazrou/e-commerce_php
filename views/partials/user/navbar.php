@@ -40,7 +40,7 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown_profile">
 							
-							<!-- <a href="#" class="dropdown-item">My Profile</a> -->
+							<a href="/user/profile" class="dropdown-item">My Profile</a>
 							<a href="/user/wishlist" class="dropdown-item">Wishlist</a>
 
 							<form action="/logout" method="post">

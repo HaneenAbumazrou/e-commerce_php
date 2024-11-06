@@ -2,12 +2,21 @@
 require "./controller/user/Cart/CartController.php";
 require "./model/Product.php";
 
+// foreach ($_COOKIE as $name => $value) {
+//   // Set the cookie's expiration date to a past time
+//   setcookie($name, '', time() - 3600, '/');
+// }
+
+// // Optional: Clear the $_COOKIE array for immediate effect
+// $_COOKIE = array();
+// die;
+
 $cart = new Cart();
 $pro = new Product();
 
 $total_price = 0;
 $cart_products = [];
-foreach ($cart->getItems() as $item){
+foreach ($cart->getItems() as $item) {
 
   $temp = [];
   $temp['product'] = $pro->where("SELECT p.*, 
@@ -19,7 +28,7 @@ foreach ($cart->getItems() as $item){
         FROM products p 
         WHERE p.id = " . $item["id"]);
 
-    $total_price += $temp['product'][0]["price"] * $item["quantity"];
+  $total_price += $temp['product'][0]["price"] * $item["quantity"];
 
   $temp['quantity'] = $item["quantity"];
 

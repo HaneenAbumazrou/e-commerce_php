@@ -49,11 +49,33 @@ ob_start();
                         <td>1</td>
                         <td>$<?= number_format($item['price'], 2) ?></td>
                         <td>
-                        <form action="/user/wishlist/delete?product=<?= $item['wishlist_id'] ?>" method="POST">
-                            <input type="submit" value="Remove"
-                            class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm">
-                        </form>
+                          <form action="/user/wishlist/delete?product=<?= $item['wishlist_id'] ?>" method="POST" id="removeForm<?= $item['wishlist_id'] ?>">
+                           <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2 fw-bold shadow-sm" 
+                            onclick="confirmRemove(<?= $item['wishlist_id'] ?>)">Remove
+                           </button>
+                          </form>
                         </td>
+
+<script>
+function confirmRemove(wishlistId) {
+    // SweetAlert2 Confirmation Dialog
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, remove it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Submit the form if confirmed
+            document.getElementById('removeForm' + wishlistId).submit();
+        }
+    });
+}
+</script>
+
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>

@@ -130,7 +130,17 @@
 									</p>
 
 									<p class="d-flex">
-										<span>Price with discount</span>
+                                       <span></span>
+                                       <span><?php
+                                            if (isset($_SESSION["total_amount"]) && $_SESSION["total_amount"] !== 0)
+                                                echo ($_SESSION["total_amount"] - $_SESSION["price_before_coupon"]) . " JD";
+                                            else
+                                                echo "0 JD"
+                                            ?></span>
+                                    </p>
+
+									<p class="d-flex">
+										<span>Price after discount</span>
 										<span>JOD <?php
 											if(isset($_SESSION["total_amount"]))
 												echo $_SESSION["total_amount"];

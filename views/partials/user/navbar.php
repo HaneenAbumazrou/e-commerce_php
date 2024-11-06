@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	<div class="container">
 		<a class="navbar-brand" href="/">MobixStore</a>
 		<form method="GET" action="/search/result">

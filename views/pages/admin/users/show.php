@@ -26,8 +26,8 @@
 
             <img src="https://media.istockphoto.com/id/1300512215/photo/headshot-portrait-of-smiling-ethnic-businessman-in-office.jpg?s=612x612&w=0&k=20&c=QjebAlXBgee05B3rcLDAtOaMtmdLjtZ5Yg9IJoiy-VY="
             alt="Profile" class="rounded-circle">
-            <h2>Kevin Anderson</h2>
-            <h3>kevin_anderson</h3>
+            <h2><?= $user['first_name'] .' '. $user['last_name'] ?></h2>
+            <h3><?= $user['username'] ?></h3>
           </div>
         </div>
 
@@ -35,17 +35,13 @@
 
       <div class="col-xl-8">
 
-        <div class="card" style="min-height: 490px;">
+        <div class="card" style="min-height: 405px;">
           <div class="card-body pt-3">
 
             <ul class="nav nav-tabs nav-tabs-bordered">
 
               <li class="nav-item">
                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
-              </li>
-
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
               </li>
 
             </ul>
@@ -57,55 +53,35 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  <div class="col-lg-9 col-md-8"><?= $user['first_name'] .' '. $user['last_name'] ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Username</div>
-                  <div class="col-lg-9 col-md-8">kevin_anderson</div>
+                  <div class="col-lg-9 col-md-8"><?= $user['username'] ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  <div class="col-lg-9 col-md-8"><?= $user['email'] ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                    <div class="col-lg-9 col-md-8">+962 772 231 333</div>
+                    <div class="col-lg-9 col-md-8"><?= $user['phone'] ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Address</div>
-                    <div class="col-lg-9 col-md-8">
-                      Amman, Al-abdaly, ppr st.
-                    </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Status</div>
-                  <div class="col-lg-9 col-md-8">
-                    <span class="badge text-bg-success">Active</span>
-                    <!-- <span class="badge text-bg-danger">Inactive</span>
-                    <span class="mx-2">22-4-2024</span> -->
-                  </div>
+                    <div class="col-lg-9 col-md-8"><?= $user['address']['address'] ?></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">From</div>
-                  <div class="col-lg-9 col-md-8">10-10-2024</div>
+                  <div class="col-lg-9 col-md-8"><?= date_format(date_create($user['created_at']), 'j-M-y') ?></div>
                 </div>
 
               </div>
-
-              <div class="tab-pane fade pt-3" id="profile-settings">
-                <form action="" method="post">
-                  <!-- <input type="submit" value="Active" class="btn btn-success"> -->
-                  <input type="submit" value="Deactive" class="btn btn-danger">
-                </form>
-              </div>
-
-
             </div>
 
           </div>
@@ -136,16 +112,18 @@
           </thead>
 
           <tbody>
-            <tr>
-              <th scope="row"><a href="/admin/users/order">#0001</a></th>
-              <td>05</td>
-              <td>NEWCUOPON</td>
-              <td>$100</td>
-              <td>$90</td>
-              <td>10%</td>
-              <td>6-10-2024</td>
-              <td><a href="/admin/users/order" class="btn btn-primary">Show</a></td>
+            <?php foreach($user_orders as $order): ?>
+              <tr>
+                <th scope="row"><a href="/admin/users/order">#<?= str_pad("$order[id]", 4, 0, STR_PAD_LEFT) ?></a></th>
+                <td><?= $order['item_count'] ?></td>
+                <td><?= $order['code'] ?? null ?></td>
+                <td><?= ($order['original_price'] == (int)$order['original_price'])? (int)$order['original_price'] : $order['original_price'] ?> JOD</td>
+                <td><?= $order['original_price'] * (1- ($order['discount_percentage']/ 100)) ?> JOD</td>
+                <td><?= ($order['discount_percentage'] == (int)$order['discount_percentage'])? (int)$order['discount_percentage'] : $order['discount_percentage'] ?>%</td>
+                <td><?= date_format(date_create($order['created_at']), 'j-M-y') ?></td>
+                <td><a href="/admin/orders/show?id=<?= $order['id'] ?>" class="btn btn-primary">Show</a></td>
             </tr>
+            <?php endforeach ?>
           </tbody>
         </table>
       </div>

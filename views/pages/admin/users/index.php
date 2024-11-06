@@ -34,33 +34,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Brandon Jacob</td>
-              <td>brandoo</td>
-              <td>+932 452379444</td>
-              <td>brand@beranm.com</td>
-              <td>20-10-2017</td>
-              <td><a href="/admin/users/show" class="btn btn-primary">Show</a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Brandon Jacob</td>
-              <td>brandoo</td>
-              <td>+932 452379444</td>
-              <td>brand@beranm.com</td>
-              <td>20-10-2017</td>
-              <td><a href="/admin/users/show" class="btn btn-primary">Show</a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Brandon Jacob</td>
-              <td>brandoo</td>
-              <td>+932 452379444</td>
-              <td>brand@beranm.com</td>
-              <td>20-10-2017</td>
-              <td><a href="/admin/users/show" class="btn btn-primary">Show</a></td>
-            </tr>
+            <?php $count = 0; ?>
+            <?php foreach($all_users as $user): ?>
+              <tr>
+              <th scope="row"><?= ++$count ?></th>
+                <td><?= $user['first_name'] . " " .$user['last_name'] ?></td>
+                <td><?= $user['username'] ?></td>
+                <td><?= $user['phone'] ?></td>
+                <td><?= $user['email'] ?></td>
+                <td><?= date_format(date_create($user['created_at']), 'j-M-y') ?></td>
+                <td><a href="/admin/users/show?user_id=<?= $user['id'] ?>" class="btn btn-primary">Show</a></td>
+              </tr>
+            <?php endforeach ?>
           </tbody>
         </table>
       </div>

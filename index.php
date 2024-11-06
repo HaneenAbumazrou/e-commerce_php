@@ -107,9 +107,9 @@ $admin_routes = [
   "/admin/orders/show" => "controller/admin/orders/show.php",
 
   // users
-  "/admin/users" => "views/pages/admin/users/index.php",
+  "/admin/users" => "controller/admin/users/index.php",
   "/admin/users/order" => "views/pages/admin/users/order.php",
-  "/admin/users/show" => "views/pages/admin/users/show.php",
+  "/admin/users/show" => "controller/admin/users/admin_show-user.php",
 
   // categories
   "/admin/categories" => "controller/admin/categories/create.php",

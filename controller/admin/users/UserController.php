@@ -17,8 +17,11 @@ class UserController {
   }
 
   public function where($query){
-
     return (new User())->where($query);
+  }
+
+  public function find($pk){
+    return (new User())->find($pk);
   }
 
 

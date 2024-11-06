@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $total_amount = $_SESSION["total_amount"] ?? $_SESSION["price_before_coupon"];
 
-      $order_id = (new Order())->create([
+    $order_id = (new Order())->create([
       "user_id" => $_SESSION["user"]["user_id"],
       "coupon_id" => @$_SESSION["coupon"][0]['id'] ?? null,
       "status" => 'pending',
@@ -111,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     ]);
 
 
+    $_SESSION['order_id_for_tracking'] = $order_id;
 
 
     // add to addresses table

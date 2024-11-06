@@ -1306,7 +1306,7 @@ h6 {
 
 /* Style Add to Cart button */
 .btn-primary {
-  background-color: #000;
+  background-color: #007bff;
   color: #fff;
   border-radius: 5px;
   font-size: 1rem;
@@ -1314,7 +1314,8 @@ h6 {
 }
 
 .btn-primary:hover {
-  background-color: #333;
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
 
 /* Style for Heart Icon */

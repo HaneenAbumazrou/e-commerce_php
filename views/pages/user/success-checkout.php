@@ -16,7 +16,11 @@
 	</div>
 
 
-
+	<section class="ftco-section">
+		<div class="container text-center fs-1 ">
+			You can track your order <a href="/user/profile/order?order_id=<?= str_pad("".$_SESSION['order_id_for_tracking'], 4, 0, STR_PAD_LEFT) ?>" style="color: #4287F5;">#<?= str_pad("".$_SESSION['order_id_for_tracking'], 4, 0, STR_PAD_LEFT) ?></a>
+		</div>
+	</section>
 
 
 

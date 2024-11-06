@@ -42,4 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     header("Location: /user/order/checkout");
     die;
   }
+  else {
+    header("Location: /user/cart");
+    die;
+  }
 }

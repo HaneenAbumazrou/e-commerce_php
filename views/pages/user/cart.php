@@ -114,5 +114,6 @@
 
 <?php
   $content = ob_get_clean();
+  unset($_SESSION["apply_coupon_errors"]);
   include './views/pages/user/layout.php';
 ?>

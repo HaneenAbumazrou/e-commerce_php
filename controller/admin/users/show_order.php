@@ -53,27 +53,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
       $order_items = (new UserController)->where("SELECT
-            p.*,
-            pi.path AS first_image_path
-            FROM 
-                order_items oi
-            JOIN 
-                products p ON oi.product_id = p.id
-            LEFT JOIN 
-                product_images pi ON pi.products_id = p.id 
-                  AND pi.id = (
-                      SELECT id 
-                      FROM product_images 
-                      WHERE products_id = p.id 
-                      ORDER BY created_at ASC 
-                      LIMIT 1
-                  )
-            WHERE 
-            oi.order_id = " . $order['order_id']);
+        p.*,
+        pi.path AS first_image_path
+        FROM 
+            order_items oi
+        JOIN 
+            products p ON oi.product_id = p.id
+        LEFT JOIN 
+            product_images pi ON pi.products_id = p.id 
+              AND pi.id = (
+                  SELECT id 
+                  FROM product_images 
+                  WHERE products_id = p.id 
+                  ORDER BY created_at ASC 
+                  LIMIT 1
+              )
+        WHERE 
+        oi.order_id = " . $order['order_id']);
 
 
 
-  $statuses = [
+  
+
+$statuses = [
     0 => 'pending',
     1 => 'in-preparation',
     2 => 'in-delivery',
@@ -84,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 }
   } else {
-    require "./views/pages/admin/404.php";
+    require "./views/pages/404.php";
     die;
   }
 }

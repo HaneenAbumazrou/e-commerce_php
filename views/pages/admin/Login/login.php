@@ -19,7 +19,7 @@
     <div class="d-flex justify-content-center py-4">
       <a href="index.html" class="logo d-flex align-items-center w-auto">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">MobixStore</span>
       </a>
     </div><!-- End Logo -->
 
@@ -29,25 +29,40 @@
 
         <div class="pt-4 pb-2">
           <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-          <p class="text-center small">Enter your username & password to login</p>
+          <p class="text-center small">Enter your Email & Password to Login</p>
         </div>
 
-        <form class="row g-3 needs-validation" action="" method="POST" novalidate onsubmit="return validateForm()">
+        <form class="row g-3 " action="" method="POST" novalidate onsubmit="return validateForm()">
 
           <div class="col-12">
             <label for="yourUsername" class="form-label">Email</label>
             <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend">@</span>
-              <input type="email" name="email" class="form-control" id="yourUsername" value="<?php echo htmlspecialchars($emailValue); ?>" >
-              <div class="invalid-feedback">Please enter your Email.</div>
+              <input type="email" name="email" class="form-control" id="yourUsername"  value="<?php echo htmlspecialchars($emailValue); ?>" >
+              
             </div>
+             <?php if (isset($errors['email_required'])): ?>
+                <div class="text-danger"><?= $errors['email_required']; ?></div>
+             <?php elseif (isset($errors['email'])): ?>
+                <div class="text-danger"><?= $errors['email']; ?></div>
+             <?php endif; ?>
+                
           </div>
+     
 
           <div class="col-12">
             <label for="yourPassword" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="yourPassword" >
-            <div class="invalid-feedback">Please enter your Password!</div>
+            <input type="password" name="password"  class="form-control" id="yourPassword" >
+            <?php if (isset($errors['password_required']) ): ?>
+              <div class="text-danger"><?= $errors['password_required']; ?></div>
+            <?php elseif (isset($errors['password']) ): ?>
+              <div class="text-danger"><?= $errors['password']; ?></div>
+            <?php endif; ?>
           </div>
+
+          <?php if (isset($errors['invalid'])): ?>
+            <div class="text-danger"><?= $errors['invalid']; ?></div>
+          <?php endif; ?>
+
 
           <div class="col-12">
             <div class="form-check">

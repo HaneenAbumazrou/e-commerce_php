@@ -1,4 +1,5 @@
 <?php
+
   if(isset($_SESSION["admin"])) {
     header("Location: /admin/dashboard");
     die;
@@ -7,6 +8,8 @@
 require "./controller/admin/login/LoginController.php";
 
 $error = false;
+$errors = []; 
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -36,7 +39,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         $error = true; 
+        if(empty($email) ){
+            $errors['email_required'] = "Please enter your email.";
+        }
+        if(empty($password) ){
+            $errors['password_required'] = "Please enter your password.";
+        }
+
+        if (!$admin) {
+            $errors['email'] = "Invalid email ";
+        }
+        else if(!password_verify($password, $admin['password'])) {
+            $errors['password'] = "Invalid password.";
+            $emailValue = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : '';
+
+        }
+        else{
+            $errors['invalid'] = "Invalid email or password.";
+            $emailValue = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : '';
+
     }
+}}
+else{
+    $emailValue = isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : '';
+
 }
 
 require "./views/pages/admin/Login/login.php";

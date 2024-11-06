@@ -43,7 +43,7 @@
 		</div>
 	</section> 
 
-	<section class="ftco-section ftco-category">
+	<section id="category-section" class="ftco-section ftco-category">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
             <div class="col-md-12 heading-section text-center ftco-animate">

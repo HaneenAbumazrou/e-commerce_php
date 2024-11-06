@@ -64,16 +64,42 @@ ob_start();
         </tr>
       </thead>
       <tbody>
+        <?= $counter = 1 ?>
         <?php foreach ($all_categories as $Category): ?>
           <tr>
-            <th scope="row"><?php echo $Category["id"] ?></th>
+            <th scope="row"><?php echo $counter;
+                            $counter++ ?></th>
             <td><img src="<?php echo ltrim($Category["image_path"], ".") . $Category["image"] ?>" width="130px" height="100px"></td>
             <td><?php echo $Category["name"] ?></td>
-            <td><?php echo $Category["image"] ?></td>
+            <td><?php echo $Category["product_count"] ?></td>
             <form action="/admin/categories/delete?id=<?= $Category["id"] ?>" method="POST">
               <td>
-                <a href="/admin/categories/update?id=<?php echo $Category["id"]; ?>" class="btn btn-success">Update</a>
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+
+                <div class="mx-2">
+                  <a href="/admin/categories/update?id=<?php echo $Category["id"]; ?>" class="btn btn-success">Update</a>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $Category["id"] ?>">
+                    Delete
+                  </button>
+                  <div class="modal fade" id="exampleModal<?php echo $Category["id"] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm delete</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you Want to delete this Category : <b><?= $Category["name"] ?></b>
+                        </div>
+                        <div class="modal-footer">
+                          <form action="/admin/categories/delete?id=<?= $Category["id"] ?>" method="POST">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </td>
             </form>
           </tr>
@@ -92,5 +118,6 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
+unset($_SESSION["success_message"]);
 require "./views/pages/admin/layout.php";
 ?>

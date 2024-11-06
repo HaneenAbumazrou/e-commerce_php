@@ -38,36 +38,39 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Order ID</th>
+              <th scope="col">Applyed Coupon</th>
               <th scope="col">Status</th>
-              <th scope="col">total Amount</th>
+              <th scope="col">Total Amount</th>
+              <th scope="col">Order Date</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-          <?php foreach ($all_orders as $index => $order): ?>
+            <?php foreach ($all_orders as $index => $order): ?>
+              <tr>
+                <th scope="row"><?= $index + 1 ?></th>
+                <td><a href="./orders/show?id=<?= $order['id'] ?>">#<?= $order['id']?></a></td>
+                <td><?= $order['code']?></td>
+                <td>
 
-            <tr>
-            <th scope="row"><?= $index + 1 ?></th>
-                    <td><?= $order['id']?></td>
-                    <td>
+                  <?php if ($order['status'] === 'completed'): ?>
+                      <span class="badge text-bg-success"><?= $order['status'] ?></span>
+                  <?php elseif ($order['status'] === 'rejected'): ?>
+                      <span class="badge text-bg-danger"><?= $order['status'] ?></span>
+                  <?php elseif ($order['status'] === 'pending'): ?>
+                      <span class="badge text-bg-warning"><?= $order['status'] ?></span>
+                  <?php else: ?>
+                      <span class="badge text-bg-secondary"><?= $order['status'] ?></span>
+                  <?php endif; ?>
+                  
 
-                    <?php if ($order['status'] === 'completed'): ?>
-    <span class="badge text-bg-success"><?= $order['status'] ?></span>
-<?php elseif ($order['status'] === 'rejected'): ?>
-    <span class="badge text-bg-danger"><?= $order['status'] ?></span>
-<?php elseif ($order['status'] === 'pending'): ?>
-    <span class="badge text-bg-warning"><?= $order['status'] ?></span>
-<?php else: ?>
-    <span class="badge text-bg-secondary"><?= $order['status'] ?></span>
-<?php endif; ?>
- 
-
-             </td>
+                </td>
 
 
-                    <td><?= $order['total_amount'] ?></td>
-                    <td><a href="./orders/show?id=<?= $order['id'] ?>" class="btn btn-primary">Show</a></td>
-                    </tr>
+                <td><?= $order['total_amount'] ?></td>
+                <td><?= $order['created_at'] ?></td>
+                <td><a href="./orders/show?id=<?= $order['id'] ?>" class="btn btn-primary">Show</a></td>
+              </tr>
             <?php endforeach; ?>
           </tbody>
         </table>

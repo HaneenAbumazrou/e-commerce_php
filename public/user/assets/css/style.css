@@ -12294,18 +12294,18 @@ h5,
 
 .btn.btn-primary:hover {
   border: 1px solid var(--main);
-  background: transparent;
-  color: var(--main);
+  background: #454a4e;
+  color: #fff;
 }
 
 .btn.btn-primary.btn-outline-primary {
   border: 1px solid var(--main);
-  background: transparent;
-  color: var(--main);
+  background: #454a4e;
+  color: #fff;
 }
 
 .btn.btn-primary.btn-outline-primary:hover {
-  border: 1px solid transparent;
+  border: 1px solid #454a4e;
   background: var(--main);
   color: #fff;
 }
@@ -12486,6 +12486,7 @@ h5,
 
 .product {
   display: block;
+  height: 100%;
   width: 100%;
   margin-bottom: 30px;
   position: relative;
@@ -12706,7 +12707,7 @@ h5,
 .product-details .form-control {
   height: 40px !important;
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  /* border: 1px solid rgba(0, 0, 0, 0.1) !important; */
   color: var(--main);
   padding: 10px 20px;
   background: transparent !important;
@@ -12885,7 +12886,7 @@ h5,
 .table tbody tr td {
   text-align: center !important;
   vertical-align: middle;
-  padding: 40px 10px;
+  padding: 12px 10px;
   border: 1px solid transparent !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
@@ -13288,11 +13289,11 @@ textarea.form-control {
 }
 
 .ftco-footer .ftco-footer-widget .btn-primary {
-  border: 2px solid #fff !important;
+  /* border: 2px solid #fff !important; */
 }
 
 .ftco-footer .ftco-footer-widget .btn-primary:hover {
-  border: 2px solid #fff !important;
+  /* border: 2px solid #fff !important; */
 }
 
 .ftco-footer-social li {
@@ -14424,4 +14425,34 @@ textarea.form-control {
 .form-control {
   color: #000;
   border-color: #000;
+}
+
+
+.call-to-action {
+  color: #000;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 22px;
+}
+
+.ion-ios-heart-empty.heart-icon {
+  font-size: 40px;
+  cursor: pointer;
+  color: red;
+  padding: 8px;
+}
+
+
+.ion-ios-heart-empty.heart-icon:hover {
+  font-size: 40px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #f00;
+  border-radius: 10px;
+}
+
+
+.nav-tabs .nav-item .nav-link.active {
+  background-color: var(--main);
+  color: #fff;
 }

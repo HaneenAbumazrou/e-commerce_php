@@ -18,17 +18,7 @@
 
 <section class="ftco-section">
 	<div class="container">
-		<!-- <div class="row justify-content-center">
-			<div class="col-md-10 mb-5 text-center">
-				<ul class="product-category">
-					<li><a href="#" class="active">All</a></li>
-					<li><a href="#">Vegetables</a></li>
-					<li><a href="#">Fruits</a></li>
-					<li><a href="#">Juice</a></li>
-					<li><a href="#">Dried</a></li>
-				</ul>
-			</div>
-		</div> -->
+
 
 		<div class="row">
 
@@ -49,18 +39,11 @@
 								</div>
 							</div>
 							<div class="bottom-area d-flex px-3">
-								<div class="m-auto d-flex">
-									<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-										<span><i class="ion-ios-cart"></i></span>
-									</a>
-
-
-									<form action="/user/wishlist/create?product=<?= $product["id"] ?>" method="POST" id="wishlist">
-										<!-- <button type="submit" class="btn p-0 border-0" style="background: none;">
-											<i class="ion-ios-heart-empty heart-icon" style="font-size: 20px; cursor: pointer; color: red;"></i>
-										</button> -->
-										<a href="#" onclick="document.getElementById('wishlist').submit();"
-										class="heart d-flex justify-content-center align-items-center ">
+								<div class="m-auto d-flex align-items-baseline">
+									<form action="/user/wishlist/create?product=<?= $product["id"] ?>" method="POST" id="wish"
+										style="margin-top: 30px;">
+										<a onclick="document.getElementById('wish').submit();" type="button"
+										class="buy-now d-flex justify-content-center align-items-center mx-1">
 											<span><i class="ion-ios-heart"></i></span>
 										</a>
 									</form>
@@ -73,51 +56,10 @@
 			<?php endforeach ?>
 
 		</div>
-		<!-- <div class="row mt-5">
-			<div class="col text-center">
-				<div class="block-27">
-					<ul>
-						<li><a href="#">&lt;</a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&gt;</a></li>
-					</ul>
-				</div>
-			</div>
-		</div> -->
 	</div>
 </section>
 
 
-
-
-
-
-
-
-
-
-<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-	<div class="container py-4">
-		<div class="row d-flex justify-content-center py-5">
-			<div class="col-md-6">
-				<h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
-				<span>Get e-mail updates about our latest shops and special offers</span>
-			</div>
-			<div class="col-md-6 d-flex align-items-center">
-				<form action="#" class="subscribe-form">
-					<div class="form-group d-flex">
-						<input type="text" class="form-control" placeholder="Enter email address">
-						<input type="submit" value="Subscribe" class="submit px-3">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
 
 
 

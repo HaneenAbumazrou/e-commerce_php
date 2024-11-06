@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	<div class="container">
-		<a class="navbar-brand" href="/">Vegefoods</a>
+		<a class="navbar-brand" href="/">MobixStore</a>
 		<form method="GET" action="/search/result">
 			<input style='border:0;box-shadow: 1px 1px 6px #d9d9d9;border-radius:5px;padding:4px;padding-left:8px;width:300px' type="text" class="" placeholder="Search" name="search">
 		</form>
@@ -12,16 +12,6 @@
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-				<!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="/pages/shop.php">Shop</a>
-						<a class="dropdown-item" href="/pages/wishlist.php">Wishlist</a>
-						<a class="dropdown-item" href="/pages/product-single.php">Single Product</a>
-						<a class="dropdown-item" href="/pages/cart.php">Cart</a>
-						<a class="dropdown-item" href="/pages/checkout.php">Checkout</a>
-					</div>
-				</li> -->
 
 
 				<li class="nav-item dropdown">
@@ -50,7 +40,7 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown_profile">
 							
-							<a href="#" class="dropdown-item">My Profile</a>
+							<a href="/user/profile" class="dropdown-item">My Profile</a>
 							<a href="/user/wishlist" class="dropdown-item">Wishlist</a>
 
 							<form action="/logout" method="post">

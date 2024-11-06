@@ -22,5 +22,10 @@
 
 <?php
   $content = ob_get_clean();
+	unset($_SESSION["original_price"]);
+	unset($_SESSION["total_amount"]);
+	unset($_SESSION["coupon"]);
+	unset($_SESSION["total_amount"]);
+	unset($_SESSION["apply_coupon_errors"]);
   include './views/pages/user/layout.php';
 ?>

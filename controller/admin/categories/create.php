@@ -24,10 +24,11 @@ function validateCategory($data)
     if (empty($_FILES["image"]["name"])) {
         $result = false;
         $_SESSION["category_errors"]["image_error"] = "An image is required.";
-    } elseif (!getimagesize($_FILES["image"]["tmp_name"])) {
-        $result = false;
-        $_SESSION["category_errors"]["image_error"] = "Invalid image file.";
     }
+    // elseif (!getimagesize($_FILES["image"]["tmp_name"])) {
+    //     $result = false;
+    //     $_SESSION["category_errors"]["image_error"] = "Invalid image file.";
+    // }
 
     return $result;
 }
@@ -67,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Create category
             $result = $categoryController->create($categoryData);
-            $_SESSION["success_message"] = "Product added successfully!";
+            $_SESSION["success_message"] = "Category added successfully!";
             //     if ($result) {
             //         $_SESSION["success_message"] = "Category added successfully!";
             //         header("Location: /admin/categories");

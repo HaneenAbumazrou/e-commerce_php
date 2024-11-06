@@ -9,7 +9,10 @@ require_once "./controller/admin/products/ProductController.php";
 if(isset($_GET["category"]) && $_GET["category"] != null){
 
   $category = (new CategoryController)->where("SELECT * FROM categories WHERE name='$_GET[category]'");
-
+  if(!$category){
+    require "./views/pages/404.php";
+    die;
+  }
 
   $query = "SELECT
       p.*, 
@@ -32,10 +35,7 @@ if(isset($_GET["category"]) && $_GET["category"] != null){
 
 // dd($products);
 
-  if(!$category){
-    require "./views/pages/404.php";
-    die;
-  }
+
 
 }
 else{

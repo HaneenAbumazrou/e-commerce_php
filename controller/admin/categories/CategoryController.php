@@ -60,9 +60,13 @@ class CategoryController
     {
         return $this->category->update($data, $id);
     }
+<<<<<<< HEAD
 
-    public function where($query){
+=======
+>>>>>>> main
+
+    public function where($query)
+    {
         return $this->category->where($query);
-
     }
 }

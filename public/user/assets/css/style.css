@@ -12864,7 +12864,7 @@ h5,
 }
 
 .table {
-  min-width: 1000px !important;
+  /* min-width: 1000px; */
   width: 100%;
   text-align: center;
 }
@@ -14443,13 +14443,13 @@ textarea.form-control {
 }
 
 
-.ion-ios-heart-empty.heart-icon:hover {
+/* .ion-ios-heart-empty.heart-icon:hover {
   font-size: 40px;
   cursor: pointer;
   color: #fff;
   background-color: #f00;
   border-radius: 10px;
-}
+} */
 
 
 .nav-tabs .nav-item .nav-link.active {

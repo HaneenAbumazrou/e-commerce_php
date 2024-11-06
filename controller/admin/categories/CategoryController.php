@@ -59,10 +59,6 @@ class CategoryController
     {
         return $this->category->update($data, $id);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 
     public function where($query)
     {

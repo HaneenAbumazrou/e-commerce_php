@@ -1,9 +1,5 @@
 <?php
 
-if (!isset($_SESSION['user'])) {
-  header("Location: /login");
-  exit;
-}
 
 require "./controller/admin/coupons/CouponController.php";
 

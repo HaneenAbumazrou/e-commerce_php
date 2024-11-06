@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
       $order_id = (new Order())->create([
       "user_id" => $_SESSION["user"]["user_id"],
-      "coupon_id" => @$_SESSION["coupon"][0]['id'] ?? 0,
+      "coupon_id" => @$_SESSION["coupon"][0]['id'] ?? null,
       "status" => 'pending',
       "original_price" => $_SESSION["price_before_coupon"],
       "total_amount" => $total_amount +3,

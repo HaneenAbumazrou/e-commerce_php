@@ -36,6 +36,11 @@ class Model
   }
 
 
+  public function all(){
+    return $this->conn->where("SELECT * FROM $this->table");
+  }
+
+
 
   public function create(array $data)
   {

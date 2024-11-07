@@ -7,7 +7,7 @@ require_once "./model/Address.php";
 // check if id exsits and correct.
 if($_SERVER["REQUEST_METHOD"] == "GET"){
   $user = (new UserController)->find($_GET["user_id"]);
-  $user["address"] = (new Address())->where("SELECT * FROM addresses WHERE user_id = ". $user['id'])[0];
+  $user["address"] = @(new Address())->where("SELECT * FROM addresses WHERE user_id = ". $user['id'])[0];
   if(isset($_GET["user_id"]) && $_GET["user_id"] != null){
     
     if(!$user){
@@ -37,8 +37,9 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
           order_items oi ON oi.order_id = o.id
       WHERE 
           o.user_id = " . $_GET['user_id'] ."
-      GROUP BY 
-          o.id");
+      GROUP BY o.id
+      ORDER BY o.id DESC
+      ");
 
 
           // dd($user_orders);

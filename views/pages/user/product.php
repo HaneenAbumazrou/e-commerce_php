@@ -42,68 +42,84 @@ ob_start();
           </p>
         </div> -->
         <p class="price"><span><?= $product[0]["price"] ?> JOD</span></p>
+        <p>
+          <?php if($product[0]["stock_quantity"] > 0): ?>
+            <span class="fw-bold"><?= $product[0]["stock_quantity"] ?> items in stock</span>
+          <?php else: ?>
+            <span class="badge text-bg-danger">out of the stock</span>
+          <?php endif ?>
+        </p>
         <p><?= $product[0]["description"] ?></p>
 
 
 
         <div style="margin-left: -375px;">
-    <div class="d-flex flex-column align-items-center">
-        <!-- Quantity Input -->
-        <form action="/user/cart/create?product=<?= $product[0]["id"] ?>" method="post" id="cart">
-            <div class="d-flex mb-3" style="max-width: 120px;">
+          <div class="d-flex flex-column align-items-center">
+            <!-- Quantity Input -->
+            <form action="/user/cart/create?product=<?= $product[0]["id"] ?>" method="post" id="cart">
+              <div class="d-flex mb-3" style="max-width: 120px;">
                 <!-- Minus button -->
                 <button type="button" onclick="decrementQuantity()">-</button>
 
                 <!-- Quantity input -->
                 <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" style="width: 60px; text-align: center;" />
-
                 <!-- Plus button -->
                 <button type="button" onclick="incrementQuantity()">+</button>
-            </div>
-        </form>
-    </div>
-</div>
+              </div>
+            </form>
+            <span class="text-danger" style="margin-left: 9rem;">
+              <?= $_SESSION['cart_errors']['qtn_error'] ?? null ?>
+            </span>
+          </div>
+        </div>
 
 
-        
+
         <!-- Button Group -->
         <div class="d-flex">
-            <p class="mb-0 mr-3">
-                <a href="#" class="btn btn-black py-3 px-5" onclick="document.getElementById('cart').submit();">Add to Cart</a>
+          <p class="mb-0 mr-3">
+            <a href="#" class="btn btn-black py-3 px-5" onclick="document.getElementById('cart').submit();">Add to Cart</a>
+          </p>
+
+          <form action="/user/wishlist/create?product=<?= $product[0]["id"] ?>" method="POST" id="wish">
+            <p class="mb-0">
+              <a href="#" class="btn custom-wishlist-btn text-black py-3 px-4" onclick="document.getElementById('wish').submit();">
+                Add to Wishlist <i class="ion-ios-heart-empty heart-icon" style="font-size: 1.0em; color: red;"></i>
+              </a>
+
+              <style>
+                /* Custom styles for the wishlist button */
+                .custom-wishlist-btn {
+                  background-color: white !important;
+                  /* Force white background */
+                  color: black !important;
+                  /* Force black text color */
+                  border: 1px solid #ccc;
+                  /* Optional: Add a border */
+                }
+
+                .custom-wishlist-btn:hover,
+                .custom-wishlist-btn:focus {
+                  background-color: #f0f0f0 !important;
+                  /* Keep white background on hover */
+                  color: black !important;
+                  /* Keep black text on hover */
+                  text-decoration: none;
+                  /* Remove underline */
+                  border-color: #ccc;
+                  /* Keep border color consistent */
+                }
+              </style>
             </p>
-            
-            <form action="/user/wishlist/create?product=<?= $product[0]["id"] ?>" method="POST" id="wish">
-                <p class="mb-0">
-                <a href="#" class="btn custom-wishlist-btn text-black py-3 px-4" onclick="document.getElementById('wish').submit();">
-    Add to Wishlist <i class="ion-ios-heart-empty heart-icon" style="font-size: 1.0em; color: red;"></i>
-</a>
-
-<style>
-/* Custom styles for the wishlist button */
-.custom-wishlist-btn {
-    background-color: white !important; /* Force white background */
-    color: black !important; /* Force black text color */
-    border: 1px solid #ccc; /* Optional: Add a border */
-}
-
-.custom-wishlist-btn:hover,
-.custom-wishlist-btn:focus {
-    background-color: #f0f0f0 !important; /* Keep white background on hover */
-    color: black !important; /* Keep black text on hover */
-    text-decoration: none; /* Remove underline */
-    border-color: #ccc; /* Keep border color consistent */
-}
-</style>
-                </p>
-            </form>
+          </form>
         </div>
-    </form>
-</div>
-
-
-
+        </form>
       </div>
+
+
+
     </div>
+  </div>
   </div>
 </section>
 
@@ -125,35 +141,35 @@ ob_start();
   <div class="container">
     <div class="row">
 
-    <?php foreach($relates as $relate): ?>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="/product?product_id=<?= $relate['id'] ?>" class="img-prod"><img class="img-fluid" src="<?= $relate["path"] ?>" alt="Colorlib Template">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#"><?= $relate["name"] ?></a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span class="price-sale"><?= $relate["price"] ?> JOD</span></p>
+      <?php foreach ($relates as $relate): ?>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="product">
+            <a href="/product?product_id=<?= $relate['id'] ?>" class="img-prod"><img class="img-fluid" src="<?= $relate["path"] ?>" alt="Colorlib Template">
+              <div class="overlay"></div>
+            </a>
+            <div class="text py-3 pb-4 px-3 text-center">
+              <h3><a href="#"><?= $relate["name"] ?></a></h3>
+              <div class="d-flex">
+                <div class="pricing">
+                  <p class="price"><span class="price-sale"><?= $relate["price"] ?> JOD</span></p>
+                </div>
               </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex align-items-baseline">
+              <div class="bottom-area d-flex px-3">
+                <div class="m-auto d-flex align-items-baseline">
                   <form action="/user/wishlist/create?product=<?= $relate["id"] ?>" method="POST" id="wish"
                     style="margin-top: 30px;">
                     <a onclick="document.getElementById('wish').submit();" type="button"
-                    class="buy-now d-flex justify-content-center align-items-center mx-1">
+                      class="buy-now d-flex justify-content-center align-items-center mx-1">
                       <span><i class="ion-ios-heart"></i></span>
                     </a>
                   </form>
                 </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-    <?php endforeach ?>
+      <?php endforeach ?>
 
     </div>
   </div>
@@ -161,21 +177,21 @@ ob_start();
 
 
 <script>
-    function incrementQuantity() {
-        var quantityInput = document.getElementById("quantity");
-        var currentValue = parseInt(quantityInput.value);
-        if (currentValue < quantityInput.max) {
-            quantityInput.value = currentValue + 1;
-        }
+  function incrementQuantity() {
+    var quantityInput = document.getElementById("quantity");
+    var currentValue = parseInt(quantityInput.value);
+    if (currentValue < quantityInput.max) {
+      quantityInput.value = currentValue + 1;
     }
+  }
 
-    function decrementQuantity() {
-        var quantityInput = document.getElementById("quantity");
-        var currentValue = parseInt(quantityInput.value);
-        if (currentValue > quantityInput.min) {
-            quantityInput.value = currentValue - 1;
-        }
+  function decrementQuantity() {
+    var quantityInput = document.getElementById("quantity");
+    var currentValue = parseInt(quantityInput.value);
+    if (currentValue > quantityInput.min) {
+      quantityInput.value = currentValue - 1;
     }
+  }
 </script>
 
 
@@ -183,5 +199,6 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
+unset($_SESSION['cart_errors']['qtn_error']);
 include './views/pages/user/layout.php';
 ?>

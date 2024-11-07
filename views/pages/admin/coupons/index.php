@@ -54,8 +54,8 @@
                   <?php endif ?>
                 </td>
                 <td><?= $coupon["discount_percentage"] ?>%</td>
-                <td><?= $coupon["valid_from"] ?></td>
-                <td><?= $coupon["valid_until"] ?></td>
+                <td><?= date_format(date_create($coupon["valid_from"]), 'j-M-y') ?></td>
+                <td><?= date_format(date_create($coupon["valid_until"]), 'j-M-y') ?></td>
                 <td>belal-shakra</td>
                 <td>
                   <a href="/admin/coupons/update?coupon_id=<?= $coupon['id'] ?>" class="btn btn-success">Update</a>

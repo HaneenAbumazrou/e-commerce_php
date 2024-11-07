@@ -1,5 +1,5 @@
 <?php
-	$title = "User | user_name";
+	$title = "User | " . $user['first_name'] .' '. $user['last_name'];
 	$users = 'active';
 	ob_start();
 ?>
@@ -73,7 +73,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Address</div>
-                    <div class="col-lg-9 col-md-8"><?= $user['address']['address'] ?></div>
+                    <div class="col-lg-9 col-md-8"><?= $user['address']['address'] ?? null ?></div>
                 </div>
 
                 <div class="row">

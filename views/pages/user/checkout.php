@@ -118,9 +118,15 @@
 										<span>JOD <?= $_SESSION["price_before_coupon"] ?? null ?></span>
 									</p>
 
-									<p class="d-flex">
+									
+									<p class="d-flex mb-0">
 										<span>Discount</span>
 										<span><?= @$_SESSION["coupon"][0]['discount_percentage'] ?? 0 ?>%</span>
+									</p>
+									<p class="d-flex mt-0">
+										<span></span>
+										<?php $price = (isset($_SESSION["total_amount"]) )? $_SESSION["total_amount"] : $_SESSION["price_before_coupon"] ?>
+										<span>JOD <?= $_SESSION["price_before_coupon"] - $price ?></span>
 									</p>
 
 									<p class="d-flex">
@@ -160,11 +166,6 @@
 
 		</div>
 	</section> <!-- section -->
-
-
-
-
-
 
 
 

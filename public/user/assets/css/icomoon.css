@@ -3751,6 +3751,7 @@
   content: "\e546";
 }
 .icon-shopping_cart:before {
+  font-size: 16px;
   content: "\e8cc";
 }
 .icon-local_hospital:before {

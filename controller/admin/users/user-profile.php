@@ -18,6 +18,7 @@ $orders = (new UserController)->where("SELECT
         o.user_id = " . $_SESSION['user']['user_id'] ."
     GROUP BY 
         o.id
+    ORDER BY o.id DESC
 ");
 
 

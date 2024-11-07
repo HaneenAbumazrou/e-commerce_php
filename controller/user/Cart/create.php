@@ -1,11 +1,19 @@
 <?php
 require "./controller/user/Cart/CartController.php";
+require "./model/Product.php";
 
 
 // Handle adding a product to the cart
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-// dd((new Cart())->getItems());
+
+  $qtn = (new Product())->select($_GET["product"], '=', 'stock_quantity');
+  if($qtn['stock_quantity'] < $_POST['quantity']){
+    $_SESSION['cart_errors']['qtn_error'] = "You cann't add over stock quantity.";
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    exit;
+  }
+
 
   $product = [
     "id" => $_GET["product"],

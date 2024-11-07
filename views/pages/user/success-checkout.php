@@ -1,5 +1,9 @@
 <?php
 	$title = 'Success';
+	if(!isset($_SESSION['order_id_for_tracking'])){
+		header("/user/cart");
+		exit;
+	}
 	ob_start();
 ?>
 

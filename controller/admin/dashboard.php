@@ -201,6 +201,25 @@ $topSellingData = getTopSellingData($topSellingFilter, $dashboardController);
 
 
 
+$top_coupons = (new Order())->where("SELECT 
+    c.id AS coupon_id,
+    c.code AS coupon_code,
+    a.username AS admin_username,
+    COUNT(o.id) AS usage_count
+FROM 
+    coupons c
+JOIN 
+    orders o ON o.coupon_id = c.id
+JOIN 
+    admins a ON c.admin_id = a.id
+GROUP BY 
+    c.code, a.username
+ORDER BY 
+    usage_count DESC
+LIMIT 5;
+");
+
+// dd($top_coupons);
 
 
 require "./views/pages/admin/index.php";

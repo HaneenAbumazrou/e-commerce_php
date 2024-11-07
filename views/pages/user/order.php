@@ -118,6 +118,7 @@ ob_start();
 
                   <tbody>
                     <?php foreach($order_items as $item): ?>
+                      <?php //dd($item) ?>
                       <tr>
                         <td scope="col">1</td>
                         <td scope="col" style="width: 15%;">
@@ -126,7 +127,7 @@ ob_start();
                         </td>
                         <td scope="col"><?= $item['name'] ?></td>
                         <td scope="col" class="text-truncate" style="max-width: 25rem;"><?= $item['description'] ?></td>
-                        <td scope="col"><?= $item['stock_quantity'] ?></td>
+                        <td scope="col"><?= $item['quantity'] ?></td>
                         <td scope="col"><?= $item['price'] ?> JOD</td>
                         <td scope="col"><a href="/product?product_id=<?= $item['id'] ?>" class="btn btn-primary">Show</a></td>
                       </tr>

@@ -54,7 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
       $order_items = (new UserController)->where("SELECT
         p.*,
-        pi.path AS first_image_path
+        pi.path AS first_image_path,
+        oi.quantity
         FROM 
             order_items oi
         JOIN 
@@ -73,7 +74,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
 
-  
 
 $statuses = [
     0 => 'pending',

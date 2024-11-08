@@ -83,7 +83,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="phone">Phone</label>
-										<input type="text" class="form-control" name="phone" value="<?= $_SESSION['user']["phone"] ?? $_POST['phone'] ?>">
+										<input type="text" class="form-control" name="phone" value="<?= @$_SESSION['user']["phone"] ?? @$_POST['phone'] ?>">
 										<span class="text-danger">
 											<?= $_SESSION["checkout_errors"]["phone_error"] ?? null ?>
 										</span>

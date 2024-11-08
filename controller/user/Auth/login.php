@@ -16,10 +16,10 @@ function validation($data){
         $result = false;
         $_SESSION["login_errors"]["email_error"] = "The email field is required.";
     }
-    elseif (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $data["email"])) {
-        $result = false;
-        $_SESSION["login_errors"]["email_error"] = "You must enter a vaild email address.";
-    }
+    // elseif (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $data["email"])) {
+    //     $result = false;
+    //     $_SESSION["login_errors"]["email_error"] = "You must enter a vaild email address.";
+    // }
 
     if(empty($data["password"])){
         $result = false;

@@ -130,6 +130,7 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Qtn</th>
@@ -150,7 +151,7 @@
                         <td scope="col" class="text-truncate" style="max-width: 25rem;"><?= $item['description'] ?></td>
                         <td scope="col"><?= $item['stock_quantity'] ?></td>
                         <td scope="col"><?= $item['price'] ?> JOD</td>
-                        <td scope="col"><a href="/product?product_id=<?= $item['id'] ?>" class="btn btn-primary">Show</a></td>
+                        <td scope="col"><a href="/admin/products/show?id=<?= $item['id'] ?>" class="btn btn-primary">Show</a></td>
                       </tr>
                     <?php endforeach ?>
                 </tbody>
